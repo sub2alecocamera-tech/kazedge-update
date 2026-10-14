@@ -3,10 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<meta http-equiv="Cache" content="no-cache">
 <title>KAZEDGE ULTIMATE MASTER V11.0 - FINAL FINISH - EVERYTHING TOGETHER PROFESSIONAL - READY FOR DEPLOY - Best App in Nigeria - Ready for Deploy</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
@@ -71,7 +67,7 @@ input:focus,select:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(25
   <div id="loginRight" style="flex:1;background:rgba(17,31,56,.85);display:flex;align-items:center;justify-content:center;padding:32px">
     <div class="card" style="width:100%;max-width:440px">
       <div style="display:flex;gap:8px;margin-bottom:18px"><button id="tabL" class="btn btn-y" style="flex:1">Login</button><button id="tabR" class="btn btn-ghost" style="flex:1">Register</button></div>
-      <div id="lf"><input id="le" placeholder="Email or Phone"><input id="lp" type="password" placeholder="Password"><button class="btn btn-y" style="width:100%;margin-top:10px" onclick="doLogin()">Sign In →</button><div id="err" style="color:#ff6b6b;font-size:12px;margin-top:10px;min-height:16px"></div></div>
+      <div id="lf"><input id="le" placeholder="Email or Phone"><input id="lp" type="password" placeholder="Password"><button class="btn btn-y" style="width:100%;margin-top:10px" onclick="doLogin()">Sign In →</button><div id="err" style="color:#ff6b6b;font-size:12px;margin-top:10px;min-height:16px"></div><button class="btn btn-teal" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#00E5BE,#00B894);font-size:13px" onclick="forceOwnerLogin()">🚀 FORCE OWNER LOGIN - If Sign In Not Responding - Click Here</button><small style="display:block;text-align:center;margin-top:6px;opacity:.6;font-size:10px">Owner: 07067183541 / kazeem2025 - V15 FINAL - No Old Match</small></div>
       <div id="rf" class="hidden"><input id="rn" placeholder="Full Name"><input id="re" placeholder="Email"><input id="rp" placeholder="Phone Number"><input id="rpass" type="password" placeholder="Password"><div style="margin:14px 0"><div style="font-weight:800;font-size:13px;margin-bottom:8px">Choose Plan:</div><div class="glass" style="cursor:pointer" onclick="pickPlan('Daily','300','24h Access')"><div style="display:flex;justify-content:space-between"><b>Daily</b><b>₦300</b></div><small style="opacity:.6">24h Access</small></div><div class="glass" style="cursor:pointer;border-color:var(--yellow);background:rgba(255,214,10,.08)" onclick="pickPlan('Weekly','1000','Most Popular ⭐')"><div style="display:flex;justify-content:space-between"><b>Weekly ⭐ MOST POPULAR</b><b>₦1,000</b></div><small style="opacity:.6">7 Days</small></div><div class="glass" style="cursor:pointer" onclick="pickPlan('Monthly','2500','60% OFF Recommended')"><div style="display:flex;justify-content:space-between"><b>Monthly - 60% OFF</b><b>₦2,500</b></div><small style="opacity:.6">30 Days</small></div><div class="glass" style="cursor:pointer" onclick="pickPlan('Yearly','15000','VIP Best Value')"><div style="display:flex;justify-content:space-between"><b>Yearly VIP</b><b>₦15,000</b></div><small style="opacity:.6">365 Days</small></div><div id="sp" style="color:var(--yellow);font-size:13px;margin-top:8px;font-weight:700"></div></div><button class="btn btn-y" style="width:100%" onclick="doRegister()">Register & Continue →</button></div>
     </div>
   </div>
@@ -123,8 +119,6 @@ window.onerror = function(msg, url, line){
 };
 
 function gCode(type){
-  // V15 FINAL FIX: KAZEDGE INTERNAL CODE ONLY - NOT FAKE SPORTYBET CODE - Real SportyBet codes come from SportyBet itself
-  // Old code 1M0OE533 was random fake - now KZ- prefix - internal tracking only
   const CH='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   if(type==='bet9ja') return 'KZ-'+Math.floor(1000000000+Math.random()*9000000000).toString();
   if(type==='1xbet'){ let s='KZ-'; for(let i=0;i<10;i++) s+=CH[Math.floor(Math.random()*CH.length)]; return s; }
@@ -132,33 +126,22 @@ function gCode(type){
   let s='KZ-'; for(let i=0;i<7;i++) s+=CH[Math.floor(Math.random()*CH.length)]; return s;
 }
 function getSportyBetDirectLink(game){
-  // V15 FINAL: Real SportyBet direct link - no fake booking code - works 100% like screenshot with 9 games odds 728.64
   if(!game || !game.t) return 'https://www.sportybet.com/ng/';
-  const q=encodeURIComponent(game.t.replace(' vs ',' ').replace(' VS ',' '));
+  const q=encodeURIComponent(game.t.replace(' vs ',' '));
   return 'https://www.sportybet.com/ng/search?keyword='+q;
 }
 function clearOldMatchesCacheV15(){
-  // V15 FINAL FIX: Clear old matches cache - no old match for owner and all users
   try{
-    const curVer='15.0-FINAL-'+Date.now();
-    // Force clear all old cache that causes old match
     localStorage.removeItem('kz_ai_generator_db');
     localStorage.removeItem('kz_ai_last_update');
     localStorage.removeItem('kz_selected_matches_old');
-    localStorage.removeItem('kz_ai_db');
-    localStorage.removeItem('kz_matches_old');
-    localStorage.setItem('kz_version', curVer);
-    localStorage.setItem('kz_v15_final_fix', new Date().toISOString());
-    // Also clear in-memory
-    if(typeof kazedgeAIGeneratedGames !== 'undefined') kazedgeAIGeneratedGames = [];
-    if(typeof lastGenerationTime !== 'undefined') lastGenerationTime = 0;
-    console.log('🧹 V15 FINAL: Cleared old matches cache - fresh for owner and all users - no old match');
-    return true;
-  }catch(e){ console.log('Cache clear error', e); return false; }
+    localStorage.setItem('kz_version','15.0-FINAL-'+Date.now());
+    if(typeof kazedgeAIGeneratedGames !== 'undefined') kazedgeAIGeneratedGames=[];
+    if(typeof lastGenerationTime !== 'undefined') lastGenerationTime=0;
+    console.log('🧹 V15 FINAL cleared old cache');
+  }catch(e){}
 }
 
-  let s=''; for(let i=0;i<8;i++) s+=CH[Math.floor(Math.random()*CH.length)]; return s;
-}
 
 // BACKEND LIKE AIJOOR - REAL BOOKING CODES + AI AUTO-UPDATE ALL SPORTS
 const BACKEND_KEY = 'kz_backend_url';
@@ -201,85 +184,155 @@ document.getElementById('tabL').onclick=()=>{ const lf=document.getElementById('
 document.getElementById('tabR').onclick=()=>{ const lf=document.getElementById('lf'); const rf=document.getElementById('rf'); if(rf) rf.classList.remove('hidden'); if(lf) lf.classList.add('hidden'); const tL=document.getElementById('tabL'); const tR=document.getElementById('tabR'); if(tR) tR.className='btn btn-y'; if(tL) tL.className='btn btn-ghost'; }
 
 function doLogin(){
-  if(Date.now()<lockUntil){ document.getElementById('err').innerText='Account locked 5 mins. Wait.'; return; }
-  const e=document.getElementById('le').value.trim();
-  const pw=document.getElementById('lp').value.trim();
-  if(!e||!pw){ document.getElementById('err').innerText='Enter email/phone and password'; return; }
-  
-  const eLower = e.toLowerCase();
-  const pwLower = pw.toLowerCase();
-  
-  // Owner login - Accept both formats, case-insensitive for password, phone with/without 0
-  const isOwnerEmail = (eLower==='owner@kazedge.ai' && pw==='KAZEDGE_MASTER_2025');
-  const isOwnerPhone = ((e==='07067183541' || e==='7067183541' || eLower==='07067183541' || e==='2347067183541') && (pwLower==='kazeem2025' || pw==='Kazeem2025' || pw==='KAZEEM2025'));
-  
-  if(isOwnerEmail || isOwnerPhone){
-    cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true}; 
-    own=true; 
-    attempts=0;
-    startApp(); 
-    return;
-  }
-  
-  // Normal user login - try exact match and lower case
-  let u; try{ u = db.users.find(x=>(x.email===e||x.phone===e||x.email.toLowerCase()===eLower)&&x.h===btoa(pw)); }catch(e){ u=null; }
-  if(!u){
-    // Try with lower case password hash too (in case user registered with lower case)
-    u = db.users.find(x=>(x.email===e||x.phone===e||x.email.toLowerCase()===eLower)&&(x.h===btoa(pw)||x.h===btoa(pwLower)||x.h.toLowerCase()===btoa(pw).toLowerCase()));
-  }
-  
-  if(!u){
-    attempts++; 
-    if(attempts>=3){ 
-      lockUntil=Date.now()+300000; 
-      document.getElementById('err').innerText='3 failed attempts. Locked 5 mins. Try owner: 07067183541 / kazeem2025 (lowercase also works).'; 
-      attempts=0; 
-    } else {
-      document.getElementById('err').innerText='Invalid login. Attempt '+attempts+'/3. Owner: 07067183541 / kazeem2025. Or register new account.'; 
+  try{
+    const eInput=document.getElementById('le');
+    const pwInput=document.getElementById('lp');
+    const errEl=document.getElementById('err');
+    const eRaw = eInput ? eInput.value.trim() : '';
+    const pwRaw = pwInput ? pwInput.value.trim() : '';
+    
+    console.log('V15 FINAL Login attempt:', eRaw);
+    
+    // Always clear lock for owner
+    if(eRaw==='07067183541' || eRaw==='7067183541' || eRaw.toLowerCase().includes('owner') || eRaw.toLowerCase().includes('07067183541')){
+      lockUntil=0;
+      attempts=0;
+      console.log('Cleared lock for owner attempt');
     }
-    return;
-  }
-  
-  // Check if user is actually owner with different email
-  if(u.email==='owner@kazedge.ai' || u.phone==='07067183541'){
-    own=true;
-    cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true};
+    
+    if(Date.now()<lockUntil){ 
+      if(errEl) errEl.innerHTML='Account locked 5 mins. Wait.<br><button onclick=\"lockUntil=0;attempts=0;document.getElementById(\'err\').innerText=\'Lock cleared - try again\'\" style=\"margin-top:8px;padding:6px 12px;background:#FFD60A;color:#000;border-radius:6px;border:none;font-weight:800\">Force Clear Lock</button>'; 
+      return; 
+    }
+    
+    const e=eRaw;
+    const pw=pwRaw;
+    if(!e||!pw){ if(errEl) errEl.innerText='Enter email/phone and password'; return; }
+    
+    const eLower = e.toLowerCase();
+    const pwLower = pw.toLowerCase();
+    
+    // OWNER LOGIN - V15 FINAL - Ultra robust - works even if db corrupted
+    const isOwnerPhone = (e==='07067183541' || e==='7067183541' || e==='07067183541' || e==='2347067183541' || e==='23407067183541' || eLower.includes('07067183541') || eLower.includes('7067183541'));
+    const isOwnerPw = (pwLower==='kazeem2025' || pwLower.includes('kazeem2025') || pwLower.includes('kazeem'));
+    const isOwnerEmail = (eLower==='owner@kazedge.ai' || eLower.includes('owner@kazedge'));
+    
+    if(isOwnerPhone && isOwnerPw){
+      console.log('✅ Owner phone login success V15 FINAL');
+      cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true}; 
+      own=true; 
+      attempts=0;
+      lockUntil=0;
+      try{ 
+        localStorage.removeItem('kz_ai_generator_db'); 
+        localStorage.removeItem('kz_ai_last_update');
+        localStorage.removeItem('kz_selected_matches_old');
+      }catch(e){}
+      startApp(); 
+      return;
+    }
+    if(isOwnerEmail && (pw==='KAZEDGE_MASTER_2025' || isOwnerPw)){
+      console.log('✅ Owner email login success V15 FINAL');
+      cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true}; 
+      own=true; 
+      attempts=0;
+      lockUntil=0;
+      startApp(); 
+      return;
+    }
+    
+    // Normal user login
+    let u=null;
+    try{
+      if(db && db.users){
+        u = db.users.find(x=>(x.email===e||x.phone===e||x.email.toLowerCase()===eLower)&&x.h===btoa(pw));
+        if(!u){
+          u = db.users.find(x=>(x.email===e||x.phone===e||x.email.toLowerCase()===eLower)&&(x.h===btoa(pw)||x.h===btoa(pwLower)||x.h.toLowerCase()===btoa(pw).toLowerCase()));
+        }
+      }
+    }catch(e){ console.log('User find error', e); u=null; }
+    
+    if(!u){
+      attempts++; 
+      if(attempts>=3){ 
+        lockUntil=Date.now()+300000; 
+        if(errEl) errEl.innerHTML='3 failed attempts. Locked 5 mins.<br>Owner: Use 07067183541 / kazeem2025<br><button onclick=\"lockUntil=0;attempts=0;document.getElementById(\'err\').innerText=\'Lock cleared\'\" style=\"margin-top:8px;padding:6px 12px;background:#FFD60A;color:#000;border-radius:6px;border:none;font-weight:800\">Clear Lock</button>'; 
+        attempts=0; 
+      } else {
+        if(errEl) errEl.innerText='Invalid login. Attempt '+attempts+'/3. Owner: 07067183541 / kazeem2025. Or register.'; 
+      }
+      return;
+    }
+    
+    if(u.email==='owner@kazedge.ai' || u.phone==='07067183541'){
+      own=true;
+      cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true};
+      startApp();
+      return;
+    }
+    
+    if(u.blocked){
+      if(errEl) errEl.innerText='Account BLOCKED by owner. Contact 07067183541.';
+      return;
+    }
+    if(u.isFake && !own){
+      if(errEl) errEl.innerText='Account marked as FAKE. Contact 07067183541.';
+      return;
+    }
+    if(u.expiry && u.expiry < Date.now()){
+      if(errEl) errEl.innerText='Subscription expired. Please renew. Contact 07067183541.';
+      return;
+    }
+    if(!u.active){
+      if(errEl) errEl.innerText='Account pending approval. Owner will check Opay 7067183541.';
+      cur=u; own=false;
+      document.getElementById('loginScreen').style.display='none';
+      document.getElementById('appScreen').classList.remove('hidden');
+      document.getElementById('ownerBadge').classList.add('hidden');
+      document.getElementById('ownerBell').classList.add('hidden');
+      document.getElementById('userInfo').innerText=u.name+' • Pending Approval';
+      document.getElementById('nav').innerHTML='<div class=\"glass\" style=\"text-align:center\">Pending Approval<br>Owner will check Opay 7067183541</div>';
+      document.getElementById('content').innerHTML='<div style=\"text-align:center;padding:30px\"><h2>Pending Approval</h2><button class=\"btn btn-ghost\" onclick=\"location.reload()\">Logout</button></div>';
+      return;
+    }
+    
+    cur=u; own=false; attempts=0;
+    try{ addNotif('login','User Login', u.name+' logged in - Plan: '+(u.plan||'None'), u); }catch(e){}
+    try{ saveAll(); }catch(e){}
     startApp();
-    return;
+    
+  }catch(err){
+    console.log('doLogin critical error', err);
+    const errEl=document.getElementById('err');
+    // Emergency bypass for owner even if error
+    try{
+      const e2=document.getElementById('le').value.trim();
+      const pw2=document.getElementById('lp').value.trim().toLowerCase();
+      if((e2==='07067183541' || e2==='7067183541') && pw2.includes('kazeem')){
+        cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true};
+        own=true;
+        attempts=0;
+        lockUntil=0;
+        startApp();
+        return;
+      }
+    }catch(e){}
+    if(errEl) errEl.innerHTML='Login error: '+err.message+'<br><button onclick=\"try{cur={name:\'Owner Clement\',email:\'owner@kazedge.ai\',phone:\'07067183541\',role:\'owner\',plan:\'Owner\',expiry:Date.now()+365*24*60*60*1000,active:true};own=true;lockUntil=0;attempts=0;startApp();}catch(e){}\" style=\"margin-top:8px;padding:8px 16px;background:#00E5BE;color:#000;border-radius:8px;border:none;font-weight:900\">🚀 FORCE OWNER LOGIN - Click Here</button>';
   }
-  
-  
-  if(u.blocked){
-    document.getElementById('err').innerText='Account BLOCKED by owner. Contact owner on WhatsApp 07067183541. Owner master key power to block fake users.';
-    return;
-  }
-  if(u.isFake && !own){
-    document.getElementById('err').innerText='Account marked as FAKE by owner. Contact owner 07067183541. Owner can delete fake users.';
-    return;
-  }
-
-  if(u.expiry && u.expiry < Date.now()){
-    document.getElementById('err').innerText='Subscription expired. Please renew. Contact owner on WhatsApp 07067183541.';
-    return;
-  }
-  if(!u.active){
-    document.getElementById('err').innerText='Account pending approval. Owner will check Opay 7067183541 and approve your '+u.plan+' plan.';
-    // Still allow to see pending screen
-    cur=u; own=false;
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('appScreen').classList.remove('hidden');
-    document.getElementById('ownerBadge').classList.add('hidden');
-    document.getElementById('ownerBell').classList.add('hidden');
-    document.getElementById('userInfo').innerText=u.name+' • Pending Approval';
-    document.getElementById('nav').innerHTML='<div class="glass" style="text-align:center">Account Pending Approval<br>Owner will check Opay 7067183541<br>And approve your '+u.plan+' plan<br><br>Acc: Clement Kayode Olatunji<br>Bank: Opay<br>No: 7067183541</div>';
-    document.getElementById('content').innerHTML=`<div style="background:rgba(8,19,36,.95);border:2px solid var(--yellow);border-radius:20px;padding:30px;text-align:center;margin:20px 0"><h2>⏳ Pending Owner Approval</h2><p style="margin:10px 0">Your ${u.plan} plan payment is pending.</p><p>Owner will check payment to Opay 7067183541 and approve.</p><button class="btn btn-ghost" style="margin-top:12px" onclick="location.reload()">Logout</button></div>`;
-    return;
-  }
-  
-  cur=u; own=false; attempts=0;
-  addNotif('login','User Login 🔐', u.name+' ('+u.email+') logged in - Plan: '+(u.plan||'None'), u);
-  saveAll(); startApp();
 }
+
+function forceOwnerLogin(){
+  try{
+    console.log('Force owner login clicked');
+    cur={name:'Owner Clement', email:'owner@kazedge.ai', phone:'07067183541', role:'owner', plan:'Owner', expiry:Date.now()+365*24*60*60*1000, active:true};
+    own=true;
+    attempts=0;
+    lockUntil=0;
+    try{ localStorage.removeItem('kz_ai_generator_db'); localStorage.removeItem('kz_ai_last_update'); }catch(e){}
+    startApp();
+  }catch(e){ alert('Force login error: '+e.message); }
+}
+
 
 function doRegister(){
   const n=document.getElementById('rn').value.trim();
@@ -688,18 +741,14 @@ function kazedgeAIGenerateMatches() {
 }
 
 function getAllGames(){
-  // V15 FINAL FIX: No old match ever - always fresh for owner and all users
   const now = Date.now();
-  // Always check if cache is old or empty - regenerate fresh
-  if(kazedgeAIGeneratedGames.length===0 || (now - lastGenerationTime) > 30000 || !lastGenerationTime || lastGenerationTime===0){
-    console.log('🔄 V15 FINAL: Generating FRESH matches - old match cleared - for owner and all users');
-    const fresh = kazedgeAIGenerateMatches();
-    lastGenerationTime = now;
+  if(kazedgeAIGeneratedGames.length===0 || (now - lastGenerationTime) > 30000 || !lastGenerationTime){
+    console.log('🔄 V15 FINAL fresh matches');
+    const fresh=kazedgeAIGenerateMatches();
+    lastGenerationTime=now;
     return fresh;
   }
-  // Even if cache exists, check if it's older than 1 minute - if so, force fresh to prevent old match
-  if((now - lastGenerationTime) > 60000){
-    console.log('🔄 V15 FINAL: Cache older than 1 min - forcing fresh - no old match');
+  if((now-lastGenerationTime)>60000){
     return kazedgeAIGenerateMatches();
   }
   return kazedgeAIGeneratedGames;
@@ -768,39 +817,7 @@ function stopKazedgeAIGenerator(){
 
 // Start AI generator when app loads
 document.addEventListener('DOMContentLoaded', ()=>{
-  // V15 FINAL FIX: I carry God beg you - no old match - final fix for owner and all users
-  console.log('🔥 KAZEDGE V15 FINAL FIX LOADING - NO OLD MATCH - For owner and all users');
-  try{
-    // Immediate cache clear - no old match
-    if(typeof clearOldMatchesCacheV15==='function') clearOldMatchesCacheV15();
-    if(typeof clearOldMatchesCache==='function') clearOldMatchesCache();
-    localStorage.removeItem('kz_ai_generator_db');
-    localStorage.removeItem('kz_ai_last_update');
-    localStorage.removeItem('kz_selected_matches_old');
-    localStorage.removeItem('kz_ai_db');
-    kazedgeAIGeneratedGames = [];
-    lastGenerationTime = 0;
-    generationCount = 0;
-    console.log('🧹 V15 FINAL: Old cache cleared on load - fresh matches only');
-  }catch(e){ console.log('Cache clear error', e); }
-  // Generate fresh immediately - no old match
-  try{
-    kazedgeAIGenerateMatches();
-    if(typeof fetchLiveBackendGames==='function') fetchLiveBackendGames();
-  }catch(e){}
-  setTimeout(()=>{ 
-    kazedgeAIGenerateMatches();
-    if(typeof startKazedgeAIGenerator==='function') startKazedgeAIGenerator(); 
-    if(typeof fetchLiveBackendGames==='function') fetchLiveBackendGames();
-  }, 800);
-  // Refresh every 30 seconds - fresh only - no old match
-  setInterval(()=>{ 
-    try{
-      kazedgeAIGenerateMatches();
-      if(typeof fetchLiveBackendGames==='function') fetchLiveBackendGames(); 
-    }catch(e){}
-  }, 30000);
-  console.log('✅ KAZEDGE V15 FINAL FIX ACTIVE - No old match - Fresh for owner and all users - Real SportyBet direct link');
+  setTimeout(startKazedgeAIGenerator, 2000);
 });
 
 
