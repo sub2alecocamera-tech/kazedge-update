@@ -1,7 +1,7 @@
 {
-  "name": "kazedge-ai-ultimate-v12-live-auto-update",
-  "version": "12.0.0",
-  "description": "KAZEDGE ULTIMATE V12 - PROFESSIONAL LIVE SERVER - Auto-updates SportyBet, Bet9ja, 1xBet games every 3 mins - Best App Nigeria - To God Be The Glory - Built by Clement Kayode Olatunji 07067183541",
+  "name": "kazedge-ai-ultimate-v19-all-in-one-professional",
+  "version": "19.0.0",
+  "description": "KAZEDGE V19 FINAL ALL IN ONE PROFESSIONAL - Every change together in one professionally app - Login fixed + No old file ever + No Man City vs Arsenal + Generator professional + Start AI very active + Reset perfect + Real SportyBet link + Sellable - Best App Nigeria - To God Be The Glory - Built by Clement Kayode Olatunji 07067183541",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,13 +10,18 @@
   "keywords": [
     "kazedge",
     "ai",
-    "live",
-    "auto-update",
-    "sportybet",
-    "bet9ja",
-    "nigeria",
+    "all-in-one",
     "professional",
-    "football"
+    "login-fixed",
+    "no-old-file",
+    "no-man-city",
+    "generator-professional",
+    "start-ai-very-active",
+    "reset-perfect",
+    "sportybet",
+    "nigeria",
+    "sellable",
+    "best-app"
   ],
   "author": "Clement Kayode Olatunji - 07067183541",
   "license": "MIT",
