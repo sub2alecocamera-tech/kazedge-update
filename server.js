@@ -1,12 +1,13 @@
 const express=require('express');const path=require('path');const cors=require('cors');const app=express();const PORT=process.env.PORT||3000;
-app.use((req,res,next)=>{res.setHeader('Cache-Control','no-store, no-cache, must-revalidate');res.setHeader('Pragma','no-cache');res.setHeader('Expires','0');next()});
-app.use(cors({origin:'*'}));app.use(express.json({limit:'20mb'}));app.use(express.urlencoded({extended:true}));app.use(express.static(__dirname));
-let cache={time:null,games:[],version:'24.0.0 MOBILE PROFESSIONAL'};
-function genServerGames(){const teams=[["Napoli","AC Milan","Serie A"],["Real Sociedad","Villarreal","La Liga"],["Aston Villa","Newcastle","Premier League"],["Leverkusen","Atalanta","Europa League"],["Enyimba","Rangers Intl","NPFL"]];const games=[];for(let i=0;i<12;i++){const [h,a,l]=teams[Math.floor(Math.random()*teams.length)];const prob=0.45+Math.random()*0.2;const odds=(1/prob*0.92).toFixed(2);const edge=(prob*100-100/parseFloat(odds)).toFixed(1);const conf=Math.max(58,Math.min(78,55+parseFloat(edge)*1.5)).toFixed(0);games.push({id:`KAZ-V24-${Date.now()}-${i}`,home:h,away:a,league:l,odds,prob:(prob*100).toFixed(0)+'%',edge:edge+'%',conf:conf+'%',isValue:parseFloat(edge)>3,code:`KZ-${Math.floor(100000+Math.random()*900000)}`,time:new Date().toISOString()})}games.sort((x,y)=>parseFloat(y.edge)-parseFloat(x.edge));return games}
-function refresh(){cache.games=genServerGames();cache.time=new Date().toISOString();console.log(`[V24 MOBILE PROFESSIONAL] Generated ${cache.games.length} tips - Value ${cache.games.filter(g=>g.isValue).length}`)}
-refresh();setInterval(refresh,60*1000);
-app.get('/health',(req,res)=>{res.json({status:'ok',app:'KAZEDGE V24 MOBILE PROFESSIONAL',version:'24.0.0',tips:cache.games.length,value:cache.games.filter(g=>g.isValue).length,time:cache.time})});
-app.get('/api/games',(req,res)=>{res.json({success:true,...cache})});
-app.get('/api/final-perfect',(req,res)=>{refresh();res.json({success:true,app:'KAZEDGE V24 MOBILE PROFESSIONAL',version:'24.0.0',tips:cache.games.length,value:cache.games.filter(g=>g.isValue).length,time:cache.time,games:cache.games.slice(0,3),note:'Mobile professional - No story - Professional words - Mobile page size'})});
+app.use(cors({origin:'*'}));
+app.use(express.json());
+app.use(express.static(__dirname,{maxAge:0}));
+app.use((req,res,next)=>{res.setHeader('Cache-Control','no-store');next()});
+let cache={games:[],time:new Date().toISOString()};
+function gen(){const t=[["Napoli","AC Milan"],["Aston Villa","Newcastle"],["Enyimba","Rangers"]];const g=[];for(let i=0;i<8;i++){const [h,a]=t[i%t.length];const p=0.52+Math.random()*0.16;const o=(1/p*0.92).toFixed(2);g.push({t:h+' vs '+a,o:o,edge:(Math.random()*5+1).toFixed(1)+'%',code:'KZ-'+Math.floor(100000+Math.random()*900000)})}return g}
+function refresh(){cache.games=gen();cache.time=new Date().toISOString()}
+refresh();setInterval(refresh,60000);
+app.get('/health',(req,res)=>{res.json({status:'ok',app:'KAZEDGE V25 FINAL PROFESSIONAL MOBILE',version:'25.0.0',tips:cache.games.length,time:cache.time})});
+app.get('/api/final-perfect',(req,res)=>{refresh();res.json({success:true,app:'KAZEDGE V25 FINAL PROFESSIONAL MOBILE',version:'25.0.0',tips:cache.games.length,time:cache.time})});
 app.get('*',(req,res)=>{res.sendFile(path.join(__dirname,'index.html'))});
-app.listen(PORT,'0.0.0.0',()=>{console.log(`✅ KAZEDGE V24 MOBILE PROFESSIONAL LIVE on ${PORT} - Mobile page size - Professional words - No story`)});
+app.listen(PORT,'0.0.0.0',()=>{console.log(`KAZEDGE V25 FINAL PROFESSIONAL MOBILE LIVE on ${PORT}`)});

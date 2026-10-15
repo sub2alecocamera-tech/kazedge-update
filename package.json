@@ -1,7 +1,7 @@
 {
-  "name": "kazedge-v24-mobile-professional",
-  "version": "24.0.0",
-  "description": "KAZEDGE V24 MOBILE PROFESSIONAL - Mobile page size, professional words, no story - Real model - Value bets only - Honest probabilities - Mobile optimized - Professional sports intelligence platform",
+  "name": "kazedge-v25-final-professional-mobile",
+  "version": "25.0.0",
+  "description": "KAZEDGE V25 FINAL PROFESSIONAL MOBILE - Clean coding - Mobile page size - Professional words - No story - Real model - Value bets only",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
