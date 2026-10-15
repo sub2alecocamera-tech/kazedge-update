@@ -1,12 +1,12 @@
 {
-  "name": "kazedge-v29-final-clean-professional",
-  "version": "29.0.0",
+  "name": "kazedge-ultimate-master-v31",
+  "version": "31.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "express": "4.18.2",
+    "cors": "2.8.5"
   }
 }
