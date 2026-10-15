@@ -1,27 +1,11 @@
 {
-  "name": "kazedge-v23-final-professional-real-perfect-checked-before-deploy-live-no-demo-no-fake-no-old-no-mistakes-perfectly-ok",
-  "version": "23.0.0",
-  "description": "KAZEDGE V23 FINAL PROFESSIONAL REAL PERFECT - CHECKED VERY MUCH WELL BEFORE DEPLOY LIVE - NO DEMO - NO FAKE - NO OLD - NO MISTAKES - PERFECTLY OK - Remove all demo, make it professionally real, remove all fake activities, make it a sure winning 100% winning app Truth: no bet is 100% sure, check kazedge Ai app very much well to avoid errors n mistakes, rebuild and redesign to be professionally perfectly ok - Real model strength 40% + form 25% + xG 20% + H2H 10% + motivation 5% - Only value edge >3% - Honest 58-78% - Not fake 82% Sure Win from screenshot old Man City vs Arsenal Today 15:00 Premier League - 15 Oct Form W4 D1 D1 Value High H2H Man City W3 Arsenal W1 D1 xG/xA 2.4 vs 1.8 WAT 15:00 ODDS 2.35 SURE 82% Code KZ-6QZ7HGL old - Fresh 2025/26 teams - Auto-remove old - Professional - No mistakes - Perfectly OK - Checked very much well before deploy live - To God Be Glory - Built by Clement Kayode Olatunji 07067183541",
+  "name": "kazedge-v24-mobile-professional",
+  "version": "24.0.0",
+  "description": "KAZEDGE V24 MOBILE PROFESSIONAL - Mobile page size, professional words, no story - Real model - Value bets only - Honest probabilities - Mobile optimized - Professional sports intelligence platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": [
-    "kazedge",
-    "v23",
-    "final",
-    "checked-before-deploy-live",
-    "professional",
-    "real",
-    "perfect",
-    "no-demo",
-    "no-fake",
-    "no-old",
-    "no-mistakes",
-    "perfectly-ok"
-  ],
-  "author": "Clement Kayode Olatunji - 07067183541",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5"
