@@ -1,6 +1,6 @@
 {
-  "name": "kazedge-ultimate-master-v31",
-  "version": "31.0.0",
+  "name": "kazedge-ultimate-master-v33-full",
+  "version": "33.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
