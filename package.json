@@ -1,7 +1,6 @@
 {
-  "name": "kazedge-v27-final-clean-no-issues",
-  "version": "27.0.0",
-  "description": "KAZEDGE V27 FINAL CLEAN NO ISSUES - Recommendable to anybody to God - No issues - Mobile professional - No story - Clean coding - Will come up",
+  "name": "kazedge-v28-login-no-hang",
+  "version": "28.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -9,8 +8,5 @@
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
