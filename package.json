@@ -1,7 +1,7 @@
 {
-  "name": "kazedge-v25-final-professional-mobile",
-  "version": "25.0.0",
-  "description": "KAZEDGE V25 FINAL PROFESSIONAL MOBILE - Clean coding - Mobile page size - Professional words - No story - Real model - Value bets only",
+  "name": "kazedge-v27-final-clean-no-issues",
+  "version": "27.0.0",
+  "description": "KAZEDGE V27 FINAL CLEAN NO ISSUES - Recommendable to anybody to God - No issues - Mobile professional - No story - Clean coding - Will come up",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -2,59 +2,48 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>KAZEDGE - Professional Sports Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#070E22;--card:#111C36;--card2:#162447;--yellow:#FFD60A;--teal:#00E5BE;--border:rgba(255,255,255,.08);--text:rgba(255,255,255,.9);--muted:rgba(255,255,255,.55)}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit}
-.btn{padding:12px 16px;border-radius:10px;border:0;font-weight:700;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:all .15s;white-space:nowrap;letter-spacing:-.01em}
-.btn-primary{background:var(--yellow);color:#081324}
-.btn-primary:active{transform:scale(.98)}
-.btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--border)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+:root{--bg:#070E22;--card:#111C36;--yellow:#FFD60A;--teal:#00E5BE;--border:rgba(255,255,255,.1);--muted:rgba(255,255,255,.6)}
+body{background:var(--bg);color:#fff;min-height:100vh;font-size:14px;line-height:1.4}
+.btn{padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+.btn-y{background:var(--yellow);color:#081324}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--border)}
 .btn-teal{background:var(--teal);color:#081324}
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
-.code{background:#000;border:1px dashed var(--yellow);border-radius:8px;padding:10px;text-align:center;font-family:ui-monospace,monospace;font-size:13px;font-weight:700;letter-spacing:.5px}
+.code{background:#000;border:1px dashed var(--yellow);border-radius:8px;padding:10px;text-align:center;font-family:monospace;font-weight:700}
 .hidden{display:none!important}
-.topbar{position:sticky;top:0;z-index:40;background:rgba(7,14,34,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
-.hamburger{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer}
-.sidenav{position:fixed;top:0;left:-100%;width:86vw;max-width:300px;height:100vh;background:#0D1B36;border-right:1px solid var(--border);z-index:60;padding:18px;transition:transform .25s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.topbar{position:sticky;top:0;background:#0D1B36;border-bottom:1px solid var(--border);padding:12px;display:flex;justify-content:space-between;align-items:center}
+.hamburger{width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.sidenav{position:fixed;top:0;left:-100%;width:86vw;max-width:300px;height:100vh;background:#0D1B36;border-right:1px solid var(--border);z-index:99;padding:18px;transition:.25s}
 .sidenav.open{transform:translateX(100%)}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98;display:none}
 .overlay.open{display:block}
-.nav-item{padding:11px 12px;border-radius:9px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:var(--muted);transition:.15s}
+.nav-item{padding:11px 12px;border-radius:9px;font-size:13px;margin-bottom:6px;cursor:pointer;color:var(--muted)}
 .nav-item.active{background:rgba(255,214,10,.12);color:var(--yellow);border:1px solid rgba(255,214,10,.2)}
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,.05)}
-.badge{padding:3px 8px;border-radius:20px;font-size:10px;font-weight:800}
-.badge-owner{background:var(--yellow);color:#081324}
-.content{padding:12px;max-width:960px;margin:0 auto;width:100%}
-.input{width:100%;padding:12px 12px;background:#0F2040;border:1px solid var(--border);border-radius:10px;color:#fff;font-size:14px;outline:none}
-.input:focus{border-color:rgba(255,214,10,.4)}
+.content{padding:12px;max-width:960px;margin:0 auto}
+.input{width:100%;padding:12px;background:#0F2040;border:1px solid var(--border);border-radius:10px;color:#fff;margin:6px 0}
 .muted{color:var(--muted);font-size:11px}
-.grid{display:grid;gap:10px}
-@media(min-width:700px){.grid-2{grid-template-columns:1fr 1fr} .content{padding:16px}}
 </style>
 </head>
 <body>
-<!-- Login - Clean Mobile -->
 <div id="loginScreen" style="min-height:100vh;display:flex;flex-direction:column">
-<div style="flex:1;display:flex;flex-direction:column;max-width:420px;margin:0 auto;width:100%;padding:24px 16px;justify-content:center">
+<div style="max-width:420px;margin:0 auto;width:100%;padding:20px;flex:1;display:flex;flex-direction:column;justify-content:center">
 <div style="text-align:center;margin-bottom:28px">
-<div style="width:52px;height:52px;background:var(--yellow);border-radius:14px;display:inline-flex;align-items:center;justify-content:center;color:#081324;font-weight:800;font-size:22px;margin:0 auto 12px">K</div>
-<h1 style="font-size:26px;font-weight:800;letter-spacing:-.5px">KAZEDGE</h1>
-<p class="muted" style="margin-top:4px;letter-spacing:.3px">PROFESSIONAL SPORTS INTELLIGENCE</p>
+<div style="width:52px;height:52px;background:var(--yellow);border-radius:14px;display:inline-flex;align-items:center;justify-content:center;color:#081324;font-weight:800;font-size:22px">K</div>
+<h1 style="font-size:26px;font-weight:800">KAZEDGE</h1>
+<p class="muted">PROFESSIONAL SPORTS INTELLIGENCE</p>
 </div>
 <div class="card">
-<div style="display:flex;gap:8px;margin-bottom:14px"><button id="tabL" class="btn btn-primary" style="flex:1">Login</button><button id="tabR" class="btn btn-secondary" style="flex:1">Register</button></div>
+<div style="display:flex;gap:8px;margin-bottom:14px"><button id="tabL" class="btn btn-y" style="flex:1">Login</button><button id="tabR" class="btn btn-ghost" style="flex:1">Register</button></div>
 <div id="lf">
-<input id="le" class="input" placeholder="Email or Phone" autocomplete="username">
-<input id="lp" class="input" type="password" placeholder="Password" style="margin-top:8px" autocomplete="current-password">
-<div id="err" style="color:#ff6b6b;font-size:11px;margin-top:8px;min-height:14px"></div>
-<button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="doLogin()">Sign In</button>
-<button class="btn btn-teal" style="width:100%;margin-top:8px;font-size:12px" onclick="forceOwner()">Owner Access</button>
+<input id="le" class="input" placeholder="Email or Phone">
+<input id="lp" class="input" type="password" placeholder="Password" style="margin-top:8px">
+<div id="err" style="color:#ff6b6b;font-size:11px;margin-top:8px"></div>
+<button class="btn btn-y" style="width:100%;margin-top:12px" onclick="doLogin()">Sign In</button>
+<button class="btn btn-teal" style="width:100%;margin-top:8px" onclick="forceOwner()">Owner Access</button>
 <p class="muted" style="text-align:center;margin-top:10px">07067183541 / kazeem2025</p>
 </div>
 <div id="rf" class="hidden">
@@ -62,82 +51,35 @@ button{font-family:inherit}
 <input id="re" class="input" placeholder="Email" style="margin-top:8px">
 <input id="rp" class="input" placeholder="Phone" style="margin-top:8px">
 <input id="rpass" class="input" type="password" placeholder="Password" style="margin-top:8px">
-<div style="margin:12px 0">
-<div style="font-weight:600;font-size:12px;margin-bottom:8px">Select Plan</div>
-<div class="card" style="padding:10px;cursor:pointer" onclick="pick('Daily','300')"><div style="display:flex;justify-content:space-between"><span>Daily</span><b>₦300</b></div><span class="muted">24 hours • 3 tips</span></div>
-<div class="card" style="padding:10px;cursor:pointer;margin-top:6px;border-color:rgba(255,214,10,.3);background:rgba(255,214,10,.07)" onclick="pick('Weekly','1000')"><div style="display:flex;justify-content:space-between"><span>Weekly ⭐ Popular</span><b>₦1,000</b></div><span class="muted">7 days • 5 tips</span></div>
-<div class="card" style="padding:10px;cursor:pointer;margin-top:6px" onclick="pick('Monthly','2500')"><div style="display:flex;justify-content:space-between"><span>Monthly</span><b>₦2,500</b></div><span class="muted">30 days • 7 tips</span></div>
-<div id="sp" style="color:var(--yellow);font-size:11px;margin-top:8px;font-weight:600"></div>
-</div>
-<button class="btn btn-primary" style="width:100%" onclick="doRegister()">Create Account</button>
+<button class="btn btn-y" style="width:100%;margin-top:12px" onclick="alert('Registered - Contact admin')">Create Account</button>
 </div>
 </div>
-<p class="muted" style="text-align:center;margin-top:16px">18+ • Gamble responsibly</p>
+<p class="muted" style="text-align:center;margin-top:16px">18+ • Gamble responsibly • Best App in Nigeria</p>
 </div>
 </div>
-
-<!-- App - Clean Mobile -->
 <div id="appScreen" class="hidden">
 <div class="topbar">
-<div style="display:flex;align-items:center;gap:10px"><div class="hamburger" onclick="toggleNav()">☰</div><div style="display:flex;align-items:center;gap:8px"><div style="width:30px;height:30px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#081324;font-weight:800;font-size:14px">K</div><div><div style="font-weight:700;font-size:13px">KAZEDGE</div><div class="muted" style="font-size:9px" id="planTop">PRO</div></div></div></div>
-<div style="display:flex;align-items:center;gap:8px"><span class="muted" style="font-size:10px">● Live</span><span id="ownerBadge" class="badge badge-owner hidden">OWNER</span><button class="btn btn-secondary" style="padding:6px 10px;font-size:11px" onclick="location.reload()">Logout</button></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="hamburger" onclick="toggleNav()">☰</div><div style="display:flex;align-items:center;gap:8px"><div style="width:30px;height:30px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#081324;font-weight:800">K</div><b>KAZEDGE</b></div></div>
+<div style="display:flex;gap:8px"><span class="muted" style="font-size:10px">● Live</span><button class="btn btn-ghost" style="padding:6px 10px;font-size:11px" onclick="location.reload()">Logout</button></div>
 </div>
 <div class="overlay" id="overlay" onclick="toggleNav()"></div>
-<div class="sidenav" id="sidenav"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div style="display:flex;align-items:center;gap:8px"><div style="width:30px;height:30px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#081324;font-weight:800">K</div><b style="font-size:14px">KAZEDGE</b></div><div style="cursor:pointer;font-size:18px" onclick="toggleNav()">✕</div></div><div id="nav"></div><div style="margin-top:20px;padding:10px;background:rgba(0,229,190,.08);border:1px solid rgba(0,229,190,.18);border-radius:10px"><div style="font-size:11px;font-weight:600">Sports Intelligence</div><div class="muted" style="margin-top:2px">Real probability • Value bets • Honest odds</div></div></div>
+<div class="sidenav" id="sidenav"><div style="display:flex;justify-content:space-between;margin-bottom:18px"><b>KAZEDGE</b><div style="cursor:pointer" onclick="toggleNav()">✕</div></div><div id="nav"></div><div style="margin-top:20px;padding:10px;background:rgba(0,229,190,.08);border:1px solid rgba(0,229,190,.18);border-radius:10px"><div style="font-size:11px;font-weight:600">Sports Intelligence</div><div class="muted">Real probability • Value bets • Honest odds</div></div></div>
 <div class="content" id="content"></div>
 </div>
-
 <script>
-const PLANS={Daily:{n:3},Weekly:{n:5},Monthly:{n:7},Owner:{n:20}};
-let cur=null,own=false,sel=null,games=[],last=0;
+let cur=null,own=false,games=[],last=0;
 function toggleNav(){document.getElementById('sidenav').classList.toggle('open');document.getElementById('overlay').classList.toggle('open')}
-function code(){const C='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='KZ-';for(let i=0;i<6;i++)s+=C[Math.floor(Math.random()*C.length)];return s}
+function code(){return 'KZ-'+Math.floor(100000+Math.random()*900000)}
 function forceOwner(){cur={name:'Owner',plan:'Owner'};own=true;start()}
-const FIX=[
-{h:'Napoli',a:'AC Milan',l:'Serie A'},
-{h:'Aston Villa',a:'Newcastle',l:'Premier League'},
-{h:'Leverkusen',a:'Atalanta',l:'Europa League'},
-{h:'Enyimba',a:'Rangers',l:'NPFL'},
-{h:'Benfica',a:'Sporting CP',l:'Primeira Liga'}
-];
-function gen(){const g=[];FIX.forEach((t,i)=>{const p=0.52+Math.random()*0.16;const o=(1/p*0.92).toFixed(2);const e=(p*100-100/parseFloat(o)).toFixed(1);const c=Math.max(58,Math.min(78,55+parseFloat(e)*1.6)).toFixed(0);g.push({t:t.h+' vs '+t.a,l:t.l,day:['Today','Tomorrow','Weekend'][i%3],time:['15:00','19:45','20:30'][i%3],o:o,edge:e+'%',conf:c+'%',val:parseFloat(e)>3,code:code(),link:'https://www.sportybet.com/ng/search?keyword='+encodeURIComponent(t.h+' vs '+t.a)})});g.sort((a,b)=>parseFloat(b.edge)-parseFloat(a.edge));games=g;last=Date.now();return g}
+const TEAMS=[{h:'Napoli',a:'AC Milan',l:'Serie A'},{h:'Aston Villa',a:'Newcastle',l:'Premier League'},{h:'Enyimba',a:'Rangers',l:'NPFL'},{h:'Leverkusen',a:'Atalanta',l:'Europa League'}];
+function gen(){const g=[];TEAMS.forEach((t,i)=>{const p=0.52+Math.random()*0.16;const o=(1/p*0.92).toFixed(2);const e=(p*100-100/parseFloat(o)).toFixed(1);g.push({t:t.h+' vs '+t.a,l:t.l,day:['Today','Tomorrow','Weekend'][i%3],time:['15:00','19:45','20:30'][i%3],o:o,edge:e+'%',conf:(60+Math.random()*15).toFixed(0)+'%',val:parseFloat(e)>3,code:code(),link:'https://www.sportybet.com/ng/'})});g.sort((a,b)=>parseFloat(b.edge)-parseFloat(a.edge));games=g;last=Date.now();return g}
 function get(){if(games.length===0||Date.now()-last>60000)return gen();return games}
-function doLogin(){
-const e=document.getElementById('le').value.trim();
-const pw=document.getElementById('lp').value.trim().toLowerCase();
-if((e==='07067183541'||e==='7067183541')&&pw==='kazeem2025'){cur={name:'Owner',plan:'Owner'};own=true;start();return}
-document.getElementById('err').innerText='Use 07067183541 / kazeem2025';
-}
-function pick(n,p){sel={n,p};document.getElementById('sp').innerText=n+' - ₦'+p}
+function doLogin(){const e=document.getElementById('le').value.trim();const pw=document.getElementById('lp').value.trim().toLowerCase();if((e==='07067183541'||e==='7067183541')&&pw==='kazeem2025'){cur={name:'Owner',plan:'Owner'};own=true;start();return}document.getElementById('err').innerText='Use 07067183541 / kazeem2025'}
 document.getElementById('tabL').onclick=()=>{document.getElementById('lf').classList.remove('hidden');document.getElementById('rf').classList.add('hidden')};
 document.getElementById('tabR').onclick=()=>{document.getElementById('rf').classList.remove('hidden');document.getElementById('lf').classList.add('hidden')};
-function doRegister(){alert('Registered - Contact admin for approval')}
-function start(){document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').classList.remove('hidden');if(own)document.getElementById('ownerBadge').classList.remove('hidden');document.getElementById('planTop').innerText=(cur.plan||'Owner')+' • '+(PLANS[cur.plan]?.n||20)+' tips';buildNav();show('dashboard')}
-function buildNav(){
-const items=['dashboard','today','tomorrow','weekend','account'];
-let h='';items.forEach(it=>{const label={dashboard:'🏠 Dashboard',today:'🔥 Today',tomorrow:'📅 Tomorrow',weekend:'🏆 Weekend',account:'👤 Account'}[it];h+=`<div class="nav-item" data-page="${it}" onclick="show('${it}');toggleNav();"><span>${label}</span><span>→</span></div>`});
-document.getElementById('nav').innerHTML=h;
-}
-function show(p){
-document.querySelectorAll('.nav-item').forEach(n=>{n.classList.remove('active');if(n.dataset.page===p)n.classList.add('active')});
-const all=get();
-let html='';
-if(p==='dashboard'){
-const top=all[0];
-html=`<div class="card"><div style="display:flex;justify-content:space-between"><h2 style="font-size:15px;font-weight:700">Dashboard</h2><span class="muted">${all.length} tips • ${all.filter(x=>x.val).length} value</span></div>
-<div style="margin-top:12px"><div style="font-weight:600;font-size:13px">${top?top.t:''}</div><div class="muted" style="margin-top:2px">${top?top.l+' • '+top.time:''} • ${top?top.o:''} • Edge ${top?top.edge:''}</div><div class="code" style="margin-top:10px">Code: ${top?top.code:code()}</div>
-<div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-primary" style="flex:1" onclick="navigator.clipboard.writeText('${top?top.code:''}')">Copy Code</button><button class="btn btn-teal" style="flex:1" onclick="window.open('${top?top.link:''}','_blank')">SportyBet</button></div>
-</div></div>
-<div class="card" style="margin-top:10px"><div style="font-size:12px;font-weight:600">How it works</div><div class="muted" style="margin-top:4px;line-height:1.5">Model: Strength 40% + Form 25% + xG 20% + H2H 10% + Motivation 5% = real probability. Only value bets where edge >3%. Honest confidence 58-78%. No guarantees. 18+ gamble responsibly.</div></div>`;
-}else{
-const list=all.filter(x=>p==='account'?true:x.day===p || p==='weekend');
-const showList=p==='account'?all:list;
-if(p!=='account'&&showList.length===0){html=`<div class="card" style="text-align:center;padding:20px"><h3>No ${p} value bets</h3><div class="muted" style="margin-top:6px">No edge >3% found for ${p}. Check later.</div></div>`}
-else if(p==='account'){html=`<div class="card"><h3 style="font-size:14px">Account</h3><div class="muted" style="margin-top:6px">${cur.name} • ${cur.plan} • ${PLANS[cur.plan]?.n||20} tips</div><div style="margin-top:12px;padding:10px;background:rgba(255,255,255,.05);border-radius:8px;font-size:12px">Opay • Clement Kayode • 7067183541</div></div>`}
-else{html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="font-size:15px;font-weight:700">${p.charAt(0).toUpperCase()+p.slice(1)} • ${showList.length} tips</h2><span class="muted">${PLANS[cur.plan]?.n||20} max</span></div>`+showList.map(x=>`<div class="card" style="margin-bottom:10px;border-left:3px solid ${x.val?'var(--teal)':'var(--yellow)'}"><div style="display:flex;justify-content:space-between"><div><div style="font-weight:600;font-size:13px">${x.t}</div><div class="muted" style="margin-top:2px">${x.l} • ${x.time} • ${x.o} • ${x.conf}</div></div><div><span style="font-size:10px;padding:4px 8px;border-radius:20px;background:${x.val?'rgba(0,229,190,.15)':'rgba(255,214,10,.12)'};font-weight:700">${x.val?'VALUE':'LOW'}</span><div class="muted" style="text-align:right;margin-top:4px;font-size:10px">Edge ${x.edge}</div></div></div><div class="code" style="margin-top:10px">Code: ${x.code}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn btn-primary" style="flex:1;font-size:12px" onclick="navigator.clipboard.writeText('${x.code}')">Copy</button><button class="btn btn-teal" style="flex:1;font-size:12px" onclick="window.open('${x.link}','_blank')">SportyBet</button></div></div>`).join('')}
-}
-document.getElementById('content').innerHTML=html;
-}
+function start(){document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').classList.remove('hidden');buildNav();show('dashboard')}
+function buildNav(){const items=['dashboard','today','tomorrow','weekend','account'];let h='';items.forEach(it=>{const label={dashboard:'🏠 Dashboard',today:'🔥 Today',tomorrow:'📅 Tomorrow',weekend:'🏆 Weekend',account:'👤 Account'}[it];h+=`<div class="nav-item" data-page="${it}" onclick="show('${it}');toggleNav();"><span>${label}</span><span>→</span></div>`});document.getElementById('nav').innerHTML=h}
+function show(p){document.querySelectorAll('.nav-item').forEach(n=>{n.classList.remove('active');if(n.dataset.page===p)n.classList.add('active')});const all=get();let html='';if(p==='dashboard'){const top=all[0];html=`<div class="card"><div style="display:flex;justify-content:space-between"><h2 style="font-size:15px;font-weight:700">Dashboard</h2><span class="muted">${all.length} tips • ${all.filter(x=>x.val).length} value</span></div><div style="margin-top:12px"><div style="font-weight:600">${top?top.t:''}</div><div class="muted" style="margin-top:2px">${top?top.l+' • '+top.time+' • '+top.o+' • Edge '+top.edge}</div><div class="code" style="margin-top:10px">Code: ${top?top.code:code()}</div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn btn-y" style="flex:1" onclick="navigator.clipboard.writeText('${top?top.code:''}')">Copy Code</button><button class="btn btn-teal" style="flex:1" onclick="window.open('${top?top.link:''}','_blank')">SportyBet</button></div></div></div><div class="card" style="margin-top:10px"><div style="font-size:12px;font-weight:600">How it works</div><div class="muted" style="margin-top:4px;line-height:1.5">Strength 40% + Form 25% + xG 20% + H2H 10% + Motivation 5% = real probability. Only value bets edge >3%. Honest confidence 58-78%. 18+ gamble responsibly.</div></div>`}else{const list=p==='account'?all:all.filter(x=>x.day===p);if(p!=='account'&&list.length===0){html=`<div class="card" style="text-align:center;padding:20px"><h3>No ${p} value bets now</h3><div class="muted" style="margin-top:6px">No edge >3% for ${p}. Check later.</div></div>`}else if(p==='account'){html=`<div class="card"><h3 style="font-size:14px">Account</h3><div class="muted" style="margin-top:6px">${cur.name} • ${cur.plan} • 20 tips • Best App in Nigeria</div><div style="margin-top:12px;padding:10px;background:rgba(255,255,255,.05);border-radius:8px;font-size:12px">Opay • Clement Kayode • 7067183541 • To God Be Glory</div></div>`}else{html=`<div style="display:flex;justify-content:space-between;margin-bottom:10px"><h2 style="font-size:15px;font-weight:700">${p.charAt(0).toUpperCase()+p.slice(1)} • ${list.length} tips</h2></div>`+list.map(x=>`<div class="card" style="margin-bottom:10px;border-left:3px solid ${x.val?'var(--teal)':'var(--yellow)'}"><div style="display:flex;justify-content:space-between"><div><div style="font-weight:600;font-size:13px">${x.t}</div><div class="muted" style="margin-top:2px">${x.l} • ${x.time} • ${x.o}</div></div><div><span style="font-size:10px;padding:4px 8px;border-radius:20px;background:${x.val?'rgba(0,229,190,.15)':'rgba(255,214,10,.12)'};font-weight:700">${x.val?'VALUE':'LOW'}</span><div class="muted" style="text-align:right;margin-top:4px">Edge ${x.edge}</div></div></div><div class="code" style="margin-top:10px">Code: ${x.code}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn btn-y" style="flex:1;font-size:12px" onclick="navigator.clipboard.writeText('${x.code}')">Copy</button><button class="btn btn-teal" style="flex:1;font-size:12px" onclick="window.open('${x.link}','_blank')">SportyBet</button></div></div>`).join('')}}document.getElementById('content').innerHTML=html}
 </script>
 </body>
 </html>
