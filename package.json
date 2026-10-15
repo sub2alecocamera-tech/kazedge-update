@@ -1,6 +1,6 @@
 {
-  "name": "kazedge-v28-login-no-hang",
-  "version": "28.0.0",
+  "name": "kazedge-v29-final-clean-professional",
+  "version": "29.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
