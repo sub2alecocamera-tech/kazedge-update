@@ -2,298 +2,164 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>KAZEDGE V33 ULTIMATE MASTER</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>KAZEDGE V35 ULTIMATE MASTER PERFECT FINAL</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#070E22;--card:#111C36;--card2:#162042;--yellow:#FFD60A;--teal:#00E5BE;--line:rgba(255,255,255,0.08);--text:#E6E8F0;--muted:#8A94B5}
-body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-.mono{font-family:'JetBrains Mono',monospace}
-button{cursor:pointer;border:0}
-.topbar{position:sticky;top:0;z-index:50;height:62px;background:rgba(7,14,34,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.02em}
-.logo b{width:34px;height:34px;background:var(--yellow);color:#070E22;display:grid;place-items:center;border-radius:10px;font-size:14px}
-.ham{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:#fff}
-.sidenav{position:fixed;top:0;left:-320px;width:280px;height:100vh;background:#0B1330;border-right:1px solid var(--line);z-index:80;transition:left .28s cubic-bezier(.4,0,.2,1);padding:20px 14px;overflow-y:auto}
+:root{--bg:#070E22;--card:#111C36;--card2:#162447;--yellow:#FFD60A;--teal:#00E5BE;--text:#E8ECF5;--muted:#8A94B0;--line:#1E2D5A}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(600px at 20% 10%,#162447 0%,transparent 60%),radial-gradient(800px at 90% 90%,#0F2A4A 0%,transparent 60%),var(--bg)}
+.login-card{width:100%;max-width:380px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.brand-mark{width:40px;height:40px;border-radius:10px;background:var(--yellow);color:#070E22;display:grid;place-items:center;font-weight:900;font-size:20px}
+.brand h1{font-size:20px;letter-spacing:-.02em}
+.brand p{font-size:12px;color:var(--muted);margin-top:2px}
+.field{margin-bottom:14px}
+.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.field input{width:100%;height:46px;background:#0B1530;border:1px solid var(--line);border-radius:12px;padding:0 14px;color:var(--text);font-size:15px;outline:none;transition:.2s}
+.field input:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,214,10,.15)}
+.btn-yellow{width:100%;height:48px;background:var(--yellow);color:#070E22;border:none;border-radius:12px;font-weight:800;font-size:14px;letter-spacing:.04em;cursor:pointer;transition:.2s}
+.btn-yellow:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,214,10,.3)}
+.hint{margin-top:14px;text-align:center;font-size:12px;color:var(--muted)}
+#appScreen{display:none}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(7,14,34,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.top-left{display:flex;align-items:center;gap:12px}
+.hamburger{width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:20px;display:grid;place-items:center;cursor:pointer;transition:.2s}
+.hamburger:hover{background:var(--card2)}
+.top-brand{font-weight:900;letter-spacing:-.02em}
+.top-brand span{color:var(--yellow)}
+.top-right{display:flex;align-items:center;gap:8px}
+.badge{font-size:10px;padding:4px 8px;border-radius:20px;background:#0B1530;border:1px solid var(--line);color:var(--muted);letter-spacing:.06em}
+.sidenav{position:fixed;top:0;left:-320px;width:300px;height:100vh;background:#0D1B36;z-index:100;transition:left .28s cubic-bezier(.4,0,.2,1);box-shadow:4px 0 24px rgba(0,0,0,.4);border-right:1px solid var(--line);display:flex;flex-direction:column}
 .sidenav.open{left:0}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:70;display:none}
-.overlay.show{display:block}
-.nav-item{width:100%;display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;background:transparent;color:var(--muted);font-size:14px;font-weight:500;text-align:left;transition:.2s}
-.nav-item.active,.nav-item:hover{background:var(--card2);color:#fff;border:1px solid var(--line)}
-.badge{font-size:10px;background:var(--yellow);color:#070E22;padding:2px 6px;border-radius:20px;font-weight:700}
-.main{max-width:980px;margin:0 auto;padding:18px 14px 90px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
-.card-teal{border-color:rgba(0,229,190,0.25);background:linear-gradient(180deg,#111C36,#121E3D)}
-.btn-y{width:100%;background:var(--yellow);color:#070E22;font-weight:700;padding:14px;border-radius:14px;font-size:14px;letter-spacing:-0.01em}
-.btn-t{width:100%;background:var(--teal);color:#070E22;font-weight:700;padding:12px;border-radius:12px}
-.input{width:100%;background:#0A1430;border:1px solid var(--line);color:#fff;padding:14px 14px;border-radius:12px;font-size:15px;outline:none}
-.input:focus{border-color:var(--teal)}
+.sidenav-head{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line)}
+.sidenav-body{flex:1;overflow:auto;padding:12px}
+.menu-item{height:44px;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:10px;cursor:pointer;color:var(--muted);font-size:14px;font-weight:500;transition:.2s;margin-bottom:4px}
+.menu-item:hover{background:var(--card2);color:var(--text)}
+.menu-item.active{background:var(--yellow);color:#070E22;font-weight:700}
+.menu-foot{padding:12px;border-top:1px solid var(--line)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;backdrop-filter:blur(2px);display:none}
+.main{max-width:980px;margin:0 auto;padding:16px 16px 100px}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.card2{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}}
-.kpi{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.pill{font-size:11px;padding:4px 8px;border-radius:20px;background:rgba(0,229,190,0.15);color:var(--teal);border:1px solid rgba(0,229,190,0.25)}
-.codebox{background:#080F28;border:1px dashed rgba(255,214,10,0.4);border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(900px 600px at 20% 10%, rgba(0,229,190,0.12), transparent), radial-gradient(700px 500px at 90% 90%, rgba(255,214,10,0.12), transparent), var(--bg)}
-.login-card{width:100%;max-width:380px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
-.hidden{display:none!important}
-.risk-low{color:var(--teal)} .risk-med{color:var(--yellow)} .risk-high{color:#FF4D6D}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr}}
+.kpi h3{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.kpi .val{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.kpi .sub{font-size:12px;color:var(--muted);margin-top:4px}
+.match-card{border:1px solid var(--line);border-radius:14px;padding:14px;background:linear-gradient(180deg,var(--card) 0%,#0E1A35 100%);transition:.2s}
+.match-card:hover{border-color:#2A3D73}
+.match-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.league{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#0B1530;border:1px solid var(--line);padding:3px 8px;border-radius:20px}
+.conf{font-size:11px;font-weight:800;color:var(--teal)}
+.teams{font-weight:700;font-size:15px;margin-bottom:6px;letter-spacing:-.01em}
+.market{font-size:12px;color:var(--muted);margin-bottom:10px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pill{font-size:10px;padding:4px 8px;border-radius:20px;border:1px solid var(--line);background:#0B1530;color:var(--muted)}
+.pill.risk-low{color:#00E5BE;border-color:rgba(0,229,190,.3);background:rgba(0,229,190,.1)}
+.pill.risk-med{color:#FFD60A;border-color:rgba(255,214,10,.3);background:rgba(255,214,10,.1)}
+.pill.risk-high{color:#FF5A5A;border-color:rgba(255,90,90,.3);background:rgba(255,90,90,.1)}
+.actions{display:flex;gap:8px}
+.btn-sm{height:36px;padding:0 12px;border-radius:9px;border:1px solid var(--line);background:#0B1530;color:var(--text);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;flex:1;display:grid;place-items:center;text-decoration:none}
+.btn-sm.yellow{background:var(--yellow);color:#070E22;border-color:var(--yellow);font-weight:800}
+.btn-sm:hover{transform:translateY(-1px)}
+.progress{height:6px;background:#0B1530;border-radius:10px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--teal);border-radius:10px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;overflow:auto;padding-bottom:2px}
+.tab{height:36px;padding:0 14px;border-radius:20px;border:1px solid var(--line);background:#0B1530;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s}
+.tab.active{background:var(--yellow);color:#070E22;border-color:var(--yellow);font-weight:800}
+.select{width:100%;height:42px;background:#0B1530;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:0 12px;font-size:14px}
+.textarea{width:100%;min-height:120px;background:#0B1530;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;font-size:14px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.disclaimer{margin-top:24px;padding:12px;border-radius:12px;background:rgba(255,214,10,.08);border:1px dashed rgba(255,214,10,.3);font-size:12px;color:#FFE27A;line-height:1.6}
+.small{font-size:12px;color:var(--muted)}
+.code-box{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#070E22;border:1px dashed var(--line);padding:10px;border-radius:10px;letter-spacing:.04em}
+.toggle{width:40px;height:24px;background:#0B1530;border:1px solid var(--line);border-radius:20px;position:relative;cursor:pointer;transition:.2s}
+.toggle.on{background:var(--yellow);border-color:var(--yellow)}
+.toggle i{position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.toggle.on i{left:18px;background:#070E22}
 </style>
 </head>
 <body>
-
-<div id="loginScreen" class="login-wrap">
-  <div class="login-card">
-    <div class="logo" style="margin-bottom:18px"><b>KZ</b><span>KAZEDGE V33<br><small style="color:var(--muted);font-weight:400;font-size:12px">ULTIMATE MASTER FINAL</small></span></div>
-    <h2 style="font-size:22px;line-height:1.1;margin-bottom:6px">Welcome back, Boss.</h2>
-    <p style="color:var(--muted);font-size:13px;margin-bottom:18px">Login instantly - No hang, No delay</p>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <input id="phone" class="input mono" placeholder="Phone: 07067183541" value="07067183541">
-      <input id="pass" class="input" type="password" placeholder="Password: kazeem2025" value="kazeem2025">
-      <button class="btn-y" onclick="doLogin()">LOGIN INSTANT →</button>
-      <div style="font-size:11px;color:var(--muted);text-align:center" class="mono">Demo: 07067183541 / kazeem2025</div>
-    </div>
-    <div style="margin-top:16px;padding:10px;background:rgba(0,229,190,0.08);border:1px solid rgba(0,229,190,0.18);border-radius:12px;font-size:11px;color:var(--muted)">Owner: Clement Kayode • Opay 7067183541 • 90%-100% Winning System</div>
-  </div>
+<div id="loginScreen">
+<div class="login-card">
+<div class="brand"><div class="brand-mark">K</div><div><h1>KAZEDGE V35</h1><p>ULTIMATE MASTER PERFECT FINAL</p></div></div>
+<div class="field"><label>Phone</label><input id="phone" value="07067183541" placeholder="07067183541"></div>
+<div class="field"><label>Password</label><input id="pass" type="password" value="kazeem2025" placeholder="kazeem2025"></div>
+<button id="loginBtn" class="btn-yellow">LOGIN INSTANT</button>
+<div class="hint">Demo 07067183541 / kazeem2025 — Instant access</div>
+<div class="disclaimer" style="margin-top:16px">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory.</div>
 </div>
-
-<div id="appShell" class="hidden">
-  <div class="topbar">
-    <div style="display:flex;align-items:center;gap:12px">
-      <button class="ham" onclick="toggleNav()">☰</button>
-      <div class="logo"><b>KZ</b> V33 ULTIMATE</div>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <span class="pill mono">LIVE • V33</span>
-      <button class="ham" style="width:34px;height:34px" onclick="doLogout()">⎋</button>
-    </div>
-  </div>
-  <div id="overlay" class="overlay" onclick="closeNav()"></div>
-  <div id="sidenav" class="sidenav">
-    <div class="logo" style="margin-bottom:18px"><b>KZ</b> KAZEDGE V33 <span class="badge">FINAL</span></div>
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <button class="nav-item active" onclick="showPage('dashboard',this)">◧ Dashboard</button>
-      <button class="nav-item" onclick="showPage('ai',this)">⚡ AI Auto-Pick <span class="badge">AUTO</span></button>
-      <button class="nav-item" onclick="showPage('analysis',this)">◐ Match Analysis</button>
-      <button class="nav-item" onclick="showPage('checker',this)">☑ Bet Slip Checker</button>
-      <button class="nav-item" onclick="showPage('builder',this)">⧉ Ticket Builder</button>
-      <button class="nav-item" onclick="showPage('fixtures',this)">◫ Fixtures</button>
-      <button class="nav-item" onclick="showPage('owner',this)">⬢ Owner Dashboard</button>
-      <button class="nav-item" onclick="showPage('account',this)">◍ Account</button>
-    </div>
-    <div style="margin-top:18px" class="card">
-      <div style="font-size:12px;color:var(--muted);margin-bottom:8px">BOOKMAKER CODE</div>
-      <div class="codebox"><span id="kzCode" class="mono" style="font-weight:700">KZ-9X4T2Q</span><button class="btn-t" style="width:auto;padding:6px 10px;font-size:12px" onclick="copyKZ()">Copy Code</button></div>
-      <a href="https://www.sportybet.com/ng/" target="_blank" style="display:block;margin-top:10px;text-align:center;background:var(--yellow);color:#070E22;padding:10px;border-radius:10px;font-weight:700;font-size:13px;text-decoration:none">Open SportyBet →</a>
-    </div>
-    <div style="margin-top:12px;font-size:10px;color:var(--muted);line-height:1.4" class="mono">DISCLAIMER: System generates 90%-100% winning tickets based on AI form analysis. Bet responsibly. No guarantee. Owner not liable for losses.</div>
-  </div>
-
-  <div class="main">
-    <!-- DASHBOARD -->
-    <section id="page-dashboard">
-      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:14px">
-        <div><h1 style="font-size:28px;line-height:.95;letter-spacing:-0.03em">Dashboard</h1><p style="color:var(--muted);font-size:13px;margin-top:6px">All 8 features live • Mobile optimized</p></div>
-        <span class="pill mono">90%-100% WIN RATE</span>
-      </div>
-      <div class="grid2">
-        <div class="card card-teal"><div style="font-size:11px;color:var(--muted)">TODAY WINNING</div><div style="font-size:26px;font-weight:700;margin-top:6px">₦ 184,500</div><div style="font-size:12px;color:var(--teal);margin-top:4px">▲ 12.4% vs yesterday</div></div>
-        <div class="card"><div style="font-size:11px;color:var(--muted)">ACTIVE TICKETS</div><div style="font-size:26px;font-weight:700;margin-top:6px">7 Tickets</div><div style="font-size:12px;color:var(--muted);margin-top:4px">3 Settled • 4 Live</div></div>
-        <div class="card"><div style="font-size:11px;color:var(--muted)">AI ACCURACY</div><div style="font-size:26px;font-weight:700;margin-top:6px">94.2%</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Last 120 predictions</div></div>
-        <div class="card" style="border-color:rgba(255,214,10,0.3)"><div style="font-size:11px;color:var(--muted)">BOOKMAKER</div><div style="font-size:14px;font-weight:700;margin-top:6px">SportyBet Integrated</div><div class="mono" style="font-size:12px;margin-top:6px;color:var(--yellow)">KZ-CODE READY</div></div>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px"><b>Quick Actions</b><span class="mono" style="font-size:11px;color:var(--muted)">V33 FULL</span></div>
-        <div class="grid2">
-          <button class="btn-y" onclick="showPage('ai',null)">RUN AI AUTO-PICK</button>
-          <button class="btn-t" onclick="showPage('builder',null)">BUILD NEW TICKET</button>
-        </div>
-      </div>
-      <div class="card" style="margin-top:12px;border-color:rgba(255,214,10,0.22)">
-        <b style="font-size:13px">8 FEATURES VERIFIED:</b>
-        <div style="display:grid;grid-template-columns:1fr 1fr;font-size:12px;gap:6px;margin-top:10px;color:var(--muted)">
-          <span>✓ AI Auto-Pick</span><span>✓ Match Analysis</span><span>✓ Bet Slip Checker</span><span>✓ Ticket Builder</span><span>✓ Automatic Fixtures</span><span>✓ Owner Dashboard</span><span>✓ Mobile-Friendly</span><span>✓ Bookmaker Integration</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- AI AUTO PICK -->
-    <section id="page-ai" class="hidden">
-      <h1 style="font-size:26px">AI Auto-Pick</h1><p style="color:var(--muted);font-size:13px;margin:6px 0 14px">One-tap 90%-100% winning logic • Form + Goals + Shots</p>
-      <div class="card"><div style="display:flex;gap:8px;margin-bottom:12px"><select id="aiMode" class="input" style="flex:1"><option>Safe Mode (1.5-3.0 odds)</option><option>Balanced (2.5-5.0)</option><option>High Risk (5.0+)</option></select><button class="btn-y" style="width:120px" onclick="runAI()">PICK NOW</button></div><div id="aiResult"></div></div>
-    </section>
-
-    <!-- MATCH ANALYSIS -->
-    <section id="page-analysis" class="hidden">
-      <h1 style="font-size:26px">Match Analysis</h1><p style="color:var(--muted);font-size:13px;margin:6px 0 14px">Form • Goals • Shots • H2H • Risk</p>
-      <div class="card"><select id="matchSel" class="input" onchange="renderAnalysis()"></select><div id="analysisBox" style="margin-top:14px"></div></div>
-    </section>
-
-    <!-- BET SLIP CHECKER -->
-    <section id="page-checker" class="hidden">
-      <h1 style="font-size:26px">Bet Slip Checker</h1><p style="color:var(--muted);font-size:13px;margin:6px 0 14px">Paste slip • Flag risky • Auto warn</p>
-      <div class="card"><textarea id="slipInput" class="input" style="height:120px;resize:none" placeholder="Paste bet codes / matches...
-Example:
-Man City vs Arsenal - Over 1.5 @1.35
-Real Madrid Win @1.78
-Risky: Both Teams To Score @3.9"></textarea><div style="display:flex;gap:8px;margin-top:10px"><button class="btn-y" onclick="checkSlip()">CHECK SLIP</button><button class="btn-t" style="background:var(--card2);color:#fff;border:1px solid var(--line)" onclick="document.getElementById('slipInput').value=''">Clear</button></div><div id="checkerResult" style="margin-top:12px"></div></div>
-    </section>
-
-    <!-- TICKET BUILDER -->
-    <section id="page-builder" class="hidden">
-      <h1 style="font-size:26px">Ticket Builder</h1><p style="color:var(--muted);font-size:13px;margin:6px 0 14px">Check matches • Combined odds • Risk level • KZ Code</p>
-      <div class="card"><div id="builderList"></div><div style="margin-top:14px;padding:12px;background:#0A1430;border-radius:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:11px;color:var(--muted)">COMBINED ODDS</div><div id="combOdds" style="font-size:20px;font-weight:700">1.00</div><div id="riskLabel" class="risk-low" style="font-size:12px">Low Risk • 90%+ Win</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--muted)">KZ CODE</div><div id="ticketKZ" class="mono" style="font-weight:700;color:var(--yellow)">KZ-XXXXXX</div><button class="btn-t" style="margin-top:6px;padding:8px 12px;font-size:12px" onclick="copyTicket()">Copy Code</button></div></div><a href="https://www.sportybet.com/ng/" target="_blank" class="btn-y" style="display:block;text-align:center;margin-top:10px;text-decoration:none">Paste Code on SportyBet →</a></div>
-    </section>
-
-    <!-- FIXTURES -->
-    <section id="page-fixtures" class="hidden">
-      <h1 style="font-size:26px">Fixtures</h1>
-      <div style="display:flex;gap:8px;margin:10px 0 14px"><button id="tabUp" class="btn-y" style="flex:1" onclick="setFixtureTab('up')">Upcoming</button><button id="tabHist" class="btn-t" style="flex:1;background:var(--card2);color:var(--muted)" onclick="setFixtureTab('hist')">History</button></div>
-      <div id="fixturesBox" class="card"></div>
-    </section>
-
-    <!-- OWNER -->
-    <section id="page-owner" class="hidden">
-      <h1 style="font-size:26px">Owner Dashboard</h1><p style="color:var(--muted);font-size:13px;margin:6px 0 14px">Clement Kayode • 07067183541 • Opay</p>
-      <div class="grid2">
-        <div class="card"><div style="font-size:11px;color:var(--muted)">TOTAL USERS</div><div style="font-size:22px;font-weight:700;margin-top:4px">1,842</div><div style="font-size:12px;color:var(--teal)">▲ 42 today</div></div>
-        <div class="card"><div style="font-size:11px;color:var(--muted)">SUBSCRIPTIONS</div><div style="font-size:22px;font-weight:700;margin-top:4px">₦ 2.4M</div><div style="font-size:12px;color:var(--muted)">This month</div></div>
-      </div>
-      <div class="card" style="margin-top:12px"><b style="font-size:13px">Recent Payments • Opay 7067183541</b><div id="payList" style="margin-top:10px"></div></div>
-      <div class="card" style="margin-top:12px"><b style="font-size:13px">User Management</b><div id="userList" style="margin-top:10px"></div></div>
-    </section>
-
-    <!-- ACCOUNT -->
-    <section id="page-account" class="hidden">
-      <h1 style="font-size:26px">Account</h1>
-      <div class="card" style="margin-top:12px"><div class="kpi"><span>Phone</span><span class="mono">07067183541</span></div><div class="kpi"><span>Plan</span><span class="pill">V33 ULTIMATE</span></div><div class="kpi"><span>Win Rate</span><span style="color:var(--teal);font-weight:700">94.2%</span></div><div class="kpi" style="border:0"><span>Bookmaker</span><span class="mono" style="color:var(--yellow)">KZ-CODE ACTIVE</span></div></div>
-      <div class="card" style="margin-top:12px"><b>Disclaimer</b><p style="font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5">KAZEDGE V33 generates 90%-100% winning tickets using AI analysis of form, goals, shots, H2H and risk modeling. All predictions are for educational purpose. Betting involves risk. Owner Clement Kayode not liable for losses. Play responsibly. Bookmaker integration via KZ-XXXXXX codes for SportyBet https://www.sportybet.com/ng/ . Opay payment to 7067183541.</p></div>
-    </section>
-  </div>
 </div>
-
+<div id="appScreen">
+<div class="topbar"><div class="top-left"><button id="hamburger" class="hamburger">☰</button><div class="top-brand">KAZEDGE <span>V35</span></div><span class="badge">PERFECT FINAL</span></div><div class="top-right"><span class="badge" id="aiTime">AI Generated now</span><span class="badge" style="color:var(--teal)">● LIVE</span></div></div>
+<div id="sidenav" class="sidenav"><div class="sidenav-head"><div class="top-brand">KAZEDGE <span>V35</span></div><button id="closeMenu" class="hamburger" style="width:36px;height:36px">✕</button></div><div class="sidenav-body" id="menuList"></div><div class="menu-foot"><div class="small">Opay Clement Kayode 7067183541</div><div class="disclaimer" style="margin-top:10px">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly.</div></div></div>
+<div id="overlay" class="overlay"></div>
+<div class="main">
+<div id="page-dashboard" class="page active"></div>
+<div id="page-autopick" class="page"></div>
+<div id="page-analysis" class="page"></div>
+<div id="page-checker" class="page"></div>
+<div id="page-builder" class="page"></div>
+<div id="page-fixtures" class="page"></div>
+<div id="page-owner" class="page"></div>
+<div id="page-account" class="page"></div>
+</div>
+</div>
 <script>
-const matches = [
-  {id:1, home:'Man City', away:'Arsenal', form:'W W D W W', form2:'W D W L W', goals:'2.8 vs 1.9', shots:'18 vs 12', h2h:'City 3-1 last', odd:1.85, tip:'Home Win or Over 1.5', prob:88},
-  {id:2, home:'Real Madrid', away:'Barcelona', form:'W W W D W', form2:'W W L W D', goals:'2.4 vs 2.2', shots:'16 vs 14', h2h:'2-2 draw', odd:2.1, tip:'BTTS Yes', prob:82},
-  {id:3, home:'Bayern Munich', away:'Dortmund', form:'W W W W D', form2:'L W W D W', goals:'3.1 vs 2.0', shots:'20 vs 11', h2h:'Bayern 4-0', odd:1.65, tip:'Over 2.5', prob:91},
-  {id:4, home:'Liverpool', away:'Chelsea', form:'D W W W W', form2:'W L D W L', goals:'2.1 vs 1.4', shots:'15 vs 9', h2h:'1-0 Liverpool', odd:1.95, tip:'Liverpool Double Chance', prob:84},
-  {id:5, home:'Inter Milan', away:'AC Milan', form:'W D W W W', form2:'W W D L W', goals:'1.9 vs 1.7', shots:'13 vs 12', h2h:'Inter 2-0', odd:2.25, tip:'Under 3.5', prob:79},
-  {id:6, home:'PSG', away:'Marseille', form:'W W D W W', form2:'L W D W W', goals:'2.6 vs 1.8', shots:'17 vs 10', h2h:'PSG 2-1', odd:1.55, tip:'PSG Win', prob:93}
-];
-
-let selected = new Set([1,3]);
-let fixtureTab='up';
-let kzCounter=0;
-
-function doLogin(){
-  const p=document.getElementById('phone').value.trim();
-  const pw=document.getElementById('pass').value.trim();
-  if(p==='07067183541' && pw==='kazeem2025'){
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('appShell').classList.remove('hidden');
-    init();
-  }else{
-    alert('Use 07067183541 / kazeem2025');
-  }
-}
-function doLogout(){
-  document.getElementById('appShell').classList.add('hidden');
-  document.getElementById('loginScreen').classList.remove('hidden');
-}
-function toggleNav(){
-  const s=document.getElementById('sidenav'); const o=document.getElementById('overlay');
-  if(s.classList.contains('open')){closeNav();}else{s.classList.add('open');o.classList.add('show');}
-}
-function closeNav(){document.getElementById('sidenav').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function showPage(id,btn){
-  document.querySelectorAll('[id^=page-]').forEach(el=>el.classList.add('hidden'));
-  document.getElementById('page-'+id).classList.remove('hidden');
-  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  closeNav(); window.scrollTo(0,0);
-}
-function init(){
-  const sel=document.getElementById('matchSel');
-  sel.innerHTML=matches.map(m=>'<option value='+m.id+'>'+m.home+' vs '+m.away+' - '+m.tip+' @'+m.odd+'</option>').join('');
-  renderAnalysis(); renderBuilder(); renderFixtures(); renderOwner();
-  genKZ(); genTicketKZ();
-}
-function genKZ(){const c='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';let s='KZ-';for(let i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];document.getElementById('kzCode').textContent=s;return s;}
-function genTicketKZ(){const k=genKZ();const el=document.getElementById('ticketKZ'); if(el) el.textContent=k; return k;}
-function copyKZ(){navigator.clipboard.writeText(document.getElementById('kzCode').textContent); alert('Copied '+document.getElementById('kzCode').textContent+' - Paste on SportyBet');}
-function copyTicket(){navigator.clipboard.writeText(document.getElementById('ticketKZ').textContent); alert('Ticket '+document.getElementById('ticketKZ').textContent+' copied');}
-
-function runAI(){
-  const mode=document.getElementById('aiMode').value;
-  const filtered = [...matches].sort((a,b)=>b.prob-a.prob).slice(0, mode.includes('Safe')?3: mode.includes('Balanced')?4:5);
-  let odds=1; filtered.forEach(m=>odds*=m.odd);
-  const box=document.getElementById('aiResult');
-  box.innerHTML='<div style=margin-top:12px;padding:12px;background:#0A1430;border-radius:12px;border:1px solid rgba(0,229,190,0.2)><div style=font-size:12px;color:var(--teal)>AI SELECTED '+filtered.length+' MATCHES • '+mode+'</div><div style=margin-top:10px;display:flex;flex-direction:column;gap:8px>'+filtered.map(m=>'<div style=display:flex;justify-content:space-between;font-size:13px><span>'+m.home+' vs '+m.away+' → '+m.tip+'</span><span class=mono style=color:var(--yellow)>@'+m.odd+' • '+m.prob+'%</span></div>').join('')+'</div><div style=margin-top:12px;display:flex;justify-content:space-between;align-items:center><span class=mono style=font-size:12px>COMBINED: '+odds.toFixed(2)+' • RISK: Low</span><span class=pill>'+genKZ()+'</span></div><button class=btn-y style=margin-top:10px onclick=genTicketKZ()>GENERATE NEW KZ CODE</button></div>';
-}
-
-function renderAnalysis(){
-  const id=parseInt(document.getElementById('matchSel').value||1);
-  const m=matches.find(x=>x.id===id)||matches[0];
-  document.getElementById('analysisBox').innerHTML='<div class=grid2><div class=card style=background:#0A1430><div style=font-size:11px;color:var(--muted)>FORM (Last 5)</div><div style=margin-top:6px;font-size:13px><b>'+m.home+':</b> '+m.form+'<br><b>'+m.away+':</b> '+m.form2+'</div></div><div class=card style=background:#0A1430><div style=font-size:11px;color:var(--muted)>GOALS / SHOTS</div><div style=margin-top:6px;font-size:13px>Goals: '+m.goals+'<br>Shots: '+m.shots+'<br>H2H: '+m.h2h+'</div></div></div><div style=margin-top:12px class=card><div style=display:flex;justify-content:space-between><b>Tip: '+m.tip+'</b><span class=mono style=color:var(--yellow)>@'+m.odd+' • '+m.prob+'% win</span></div><div style=margin-top:8px;height:8px;background:#0A1430;border-radius:10px;overflow:hidden><div style=width:'+m.prob+'%;height:100%;background:var(--teal)'></div></div><div style=margin-top:8px;font-size:11px;color:var(--muted)>Risk: '+(m.prob>90?'Low - 90%+ winning':m.prob>80?'Medium - Safe combo':'High - Use checker')+'</div></div>';
-}
-
-function checkSlip(){
-  const txt=document.getElementById('slipInput').value;
-  if(!txt.trim()){alert('Paste slip first');return;}
-  const lines=txt.split('\n').filter(Boolean);
-  let risky=0; let html=lines.map(l=>{const hasHigh=l.match(/@\s*([3-9]\.\d+)/); const isRisky=hasHigh||/both.*score|correct.*score/i.test(l); if(isRisky)risky++; return '<div style=display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px><span>'+l+'</span><span class='+(isRisky?'risk-high':'risk-low')+'>'+(isRisky?'⚠ RISKY':'✓ SAFE')+'</span></div>';}).join('');
-  document.getElementById('checkerResult').innerHTML='<div class=card style=background:#0A1430><b>Result: '+lines.length+' picks • '+risky+' risky flagged</b><div style=margin-top:10px>'+html+'</div><div style=margin-top:10px;font-size:12px;color:'+(risky>1?'#FF4D6D':'var(--teal)')+'>'+(risky>1?'Remove risky picks to reach 90%-100% win rate':'Ticket looks safe - 90%+ win chance')+'</div></div>';
-}
-
-function renderBuilder(){
-  const box=document.getElementById('builderList');
-  box.innerHTML=matches.map(m=>'<label style=display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:'+(selected.has(m.id)?'#121E3D':'transparent')+'><input type=checkbox '+(selected.has(m.id)?'checked':'')+' onchange=togglePick('+m.id+') style=width:18px;height:18px><div style=flex:1><div style=font-size:13px;font-weight:600>'+m.home+' vs '+m.away+'</div><div style=font-size:11px;color:var(--muted)>'+m.tip+' @'+m.odd+' • '+m.prob+'%</div></div><span class=mono style=color:var(--yellow)>@'+m.odd+'</span></label>').join('');
-  updateBuilder();
-}
-function togglePick(id){if(selected.has(id))selected.delete(id);else selected.add(id);renderBuilder();}
-function updateBuilder(){
-  let odds=1; let prob=100;
-  matches.forEach(m=>{if(selected.has(m.id)){odds*=m.odd; prob=Math.min(prob,m.prob);}});
-  if(selected.size===0){odds=1; prob=100;}
-  document.getElementById('combOdds').textContent=odds.toFixed(2);
-  const lab=document.getElementById('riskLabel');
-  if(prob>90){lab.textContent='Low Risk • '+prob+'% Win • 90%-100%'; lab.className='risk-low';}
-  else if(prob>80){lab.textContent='Medium Risk • '+prob+'% Win'; lab.className='risk-med';}
-  else{lab.textContent='High Risk • '+prob+'% Win'; lab.className='risk-high';}
-}
-function setFixtureTab(t){
-  fixtureTab=t;
-  document.getElementById('tabUp').style.background=t==='up'?'var(--yellow)':'var(--card2)';
-  document.getElementById('tabUp').style.color=t==='up'?'#070E22':'var(--muted)';
-  document.getElementById('tabHist').style.background=t==='hist'?'var(--yellow)':'var(--card2)';
-  document.getElementById('tabHist').style.color=t==='hist'?'#070E22':'var(--muted)';
-  renderFixtures();
-}
-function renderFixtures(){
-  const box=document.getElementById('fixturesBox');
-  if(fixtureTab==='up'){
-    box.innerHTML=matches.map(m=>'<div style=display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)><div><div style=font-weight:600;font-size:14px>'+m.home+' vs '+m.away+'</div><div style=font-size:11px;color:var(--muted) class=mono>Today 19:00 • '+m.tip+'</div></div><div style=text-align:right><div class=mono style=color:var(--yellow)>@'+m.odd+'</div><div style=font-size:11px;color:var(--teal)>'+m.prob+'% tip</div></div></div>').join('');
-  }else{
-    box.innerHTML='<div style=font-size:13px;color:var(--muted);margin-bottom:10px>Last 7 settled - 6 Won, 1 Lost (94.2%)</div>'+matches.slice(0,5).map((m,i)=>'<div style=display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)><span style=font-size:13px>'+m.home+' '+ (i===2?'1-1':'2-0')+' '+m.away+'</span><span class='+(i===2?'risk-high':'risk-low')+'>'+(i===2?'LOST':'WON')+'</span></div>').join('');
-  }
-}
-function renderOwner(){
-  const pays=[
-    {name:'Ahmed M.', amount:'₦5,000', time:'2m ago', ref:'OPAY-7821'},
-    {name:'Chidi O.', amount:'₦10,000', time:'12m ago', ref:'OPAY-7820'},
-    {name:'Tolu K.', amount:'₦5,000', time:'28m ago', ref:'OPAY-7819'},
-    {name:'Sade A.', amount:'₦15,000', time:'1h ago', ref:'OPAY-7818'}
-  ];
-  document.getElementById('payList').innerHTML=pays.map(p=>'<div style=display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px><span>'+p.name+' • '+p.ref+'</span><span style=color:var(--teal)>'+p.amount+' • '+p.time+'</span></div>').join('');
-  const users=[
-    {phone:'0803...4412', plan:'VIP', win:'96%'},
-    {phone:'0706...3541', plan:'OWNER', win:'100%'},
-    {phone:'0810...9921', plan:'PRO', win:'92%'},
-    {phone:'0902...1123', plan:'BASIC', win:'88%'}
-  ];
-  document.getElementById('userList').innerHTML=users.map(u=>'<div style=display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px><span class=mono>'+u.phone+' • '+u.plan+'</span><span class=pill>'+u.win+'</span></div>').join('');
-}
+var phone=document.getElementById('phone');var pass=document.getElementById('pass');var loginBtn=document.getElementById('loginBtn');
+loginBtn.onclick=function(){var p=phone.value.trim();var pw=pass.value.trim().toLowerCase();if(p==='07067183541' && pw==='kazeem2025'){localStorage.setItem('kz_v35_logged','1');document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').style.display='block';initApp();}else{alert('Demo 07067183541 / kazeem2025');}};
+if(localStorage.getItem('kz_v35_logged')==='1'){document.getElementById('loginScreen').style.display='none';document.getElementById('appScreen').style.display='block';}
+var hamburger=document.getElementById('hamburger');var closeBtn=document.getElementById('closeMenu');var sidenav=document.getElementById('sidenav');var overlay=document.getElementById('overlay');
+function openMenu(){sidenav.classList.add('open');overlay.style.display='block';document.body.style.overflow='hidden';}
+function closeMenuFn(){sidenav.classList.remove('open');overlay.style.display='none';document.body.style.overflow='';}
+hamburger.onclick=openMenu;closeBtn.onclick=closeMenuFn;overlay.onclick=closeMenuFn;
+var pages=['dashboard','autopick','analysis','checker','builder','fixtures','owner','account'];
+var menuNames={'dashboard':'Dashboard','autopick':'AI Auto-Pick','analysis':'Match Analysis','checker':'Bet Slip Checker','builder':'Ticket Builder','fixtures':'Fixtures','owner':'Owner Dashboard','account':'Account'};
+var menuIcons={'dashboard':'◫','autopick':'⚡','analysis':'◧','checker':'✓','builder':'⧉','fixtures':'◎','owner':'⬢','account':'◍'};
+var currentPage='dashboard';
+function showPage(id){currentPage=id;document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');p.style.display='none';});var el=document.getElementById('page-'+id);el.classList.add('active');el.style.display='block';closeMenuFn();window.scrollTo(0,0);renderMenu();if(id==='dashboard')renderDashboard();if(id==='autopick')renderAutoPick();if(id==='analysis')renderAnalysis();if(id==='checker')renderChecker();if(id==='builder')renderBuilder();if(id==='fixtures')renderFixtures();if(id==='owner')renderOwner();if(id==='account')renderAccount();}
+function renderMenu(){var html='';pages.forEach(function(id){html+='<div class="menu-item '+(currentPage===id?'active':'')+'" onclick="showPage(''+id+'')"><span>'+menuIcons[id]+'</span> '+menuNames[id]+'</div>';});document.getElementById('menuList').innerHTML=html;}
+var leagues=['Premier League','LaLiga','Serie A','Bundesliga','Ligue 1','Eredivisie','NPFL','UCL'];
+var teams=[['Man City','Arsenal'],['Real Madrid','Barcelona'],['Inter','Juventus'],['Bayern','Dortmund'],['PSG','Lyon'],['Ajax','PSV'],['Enyimba','Rangers'],['Liverpool','Chelsea'],['Atletico','Sevilla'],['Milan','Napoli'],['Leverkusen','Leipzig'],['Marseille','Monaco']];
+function rand(a,b){return Math.random()*(b-a)+a;}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function genForm(){var f=['W','D','L'];var s='';for(var i=0;i<5;i++){s+=(i?'-':'')+pick(f);}return s;}
+function genH2H(){var r=[];for(var i=0;i<5;i++){var a=Math.floor(rand(0,3)),b=Math.floor(rand(0,3));r.push(a>b?'H':a<b?'A':'D');}return r.join(' - ');}
+var matches=[];
+function generateMatches(){matches=[];var now=new Date();for(var i=0;i<18;i++){var d=new Date(now);d.setDate(now.getDate()+Math.floor(i/3));d.setHours(14+(i%4)*2);var pair=teams[i%teams.length];var sHome=rand(62,88),sAway=rand(55,84);var formHomeScore=rand(50,92),formAwayScore=rand(45,85);var xgHome=rand(0.9,2.4),xgAway=rand(0.7,1.9);var h2hScore=rand(40,85);var motHome=rand(60,95);var modelProb=(sHome*0.40+formHomeScore*0.25+xgHome*20*0.20+h2hScore*0.10+motHome*0.05);if(modelProb>85)modelProb=85;if(modelProb<45)modelProb=45;var bookOdds=rand(1.55,2.85);var fairOdds=100/modelProb;var edge=(fairOdds-bookOdds)/bookOdds*100+rand(-1,5);var conf=(sHome*0.3+formHomeScore*0.25+(xgHome*20)+h2hScore*0.15)/2;if(conf>92)conf=92;var risk=conf>75&&edge>4?'Low':conf>65&&edge>2?'Med':edge>0?'High':'Very Risky';var market=modelProb>60?pair[0]+' Win':modelProb>52?pair[0]+' Double Chance':'Over 1.5 Goals';var code='KZ-'+Math.floor(rand(100000,999999));matches.push({id:'M'+i,league:pick(leagues),home:pair[0],away:pair[1],date:d.toISOString().slice(0,10),time:d.toTimeString().slice(0,5),oddsHome:bookOdds.toFixed(2),oddsDraw:rand(3.1,4.2).toFixed(2),oddsAway:rand(2.4,5.5).toFixed(2),strengthHome:sHome.toFixed(0),strengthAway:sAway.toFixed(0),formHome:genForm(),formAway:genForm(),formHomeScore:formHomeScore.toFixed(0),xgHome:xgHome.toFixed(2),xgAway:xgAway.toFixed(2),shotsHome:rand(3.5,7.2).toFixed(1),shotsAway:rand(2.8,6.1).toFixed(1),goalsScoredHome:rand(1.1,2.6).toFixed(1),goalsConcededHome:rand(0.6,1.4).toFixed(1),h2h:genH2H(),h2hScore:h2hScore.toFixed(0),motivationHome:motHome.toFixed(0),modelProb:modelProb.toFixed(1),bookOdds:bookOdds.toFixed(2),edge:edge.toFixed(1),confidence:conf.toFixed(0),risk:risk,stake:conf>75?'High Stake':conf>65?'Medium Stake':'Low Stake',ev:(edge*rand(0.6,1.2)).toFixed(1),market:market,code:code});}}
+var history=[];
+function loadHistory(){try{history=JSON.parse(localStorage.getItem('kz_v35_history')||'[]');}catch(e){history=[];}if(history.length===0){for(var i=0;i<8;i++){var m=matches[i%matches.length];var won=Math.random()>0.38;history.push({id:'H'+i,date:new Date(Date.now()-(i+1)*86400000).toISOString().slice(0,10),match:m.home+' vs '+m.away,market:m.market,odds:m.bookOdds,code:m.code,result:won?'WON':'LOST',profit:won?(parseFloat(m.bookOdds)*100-100).toFixed(0):'-100'});}saveHistory();}}
+function saveHistory(){localStorage.setItem('kz_v35_history',JSON.stringify(history));}
+var autoPickEnabled=true;var autoGenEnabled=true;var autoRefreshEnabled=true;var refreshTimer=null;var selectedTicket={};
+function initApp(){generateMatches();loadHistory();renderMenu();renderDashboard();startAutoRefresh();updateAiTime();}
+function updateAiTime(){var el=document.getElementById('aiTime');if(el)el.textContent='AI Generated '+new Date().toLocaleTimeString();}
+function startAutoRefresh(){if(refreshTimer)clearInterval(refreshTimer);if(autoRefreshEnabled){refreshTimer=setInterval(function(){generateMatches();updateAiTime();if(currentPage==='dashboard')renderDashboard();if(currentPage==='autopick')renderAutoPick();if(currentPage==='fixtures')renderFixtures();},60000);}}
+function copyCode(code){navigator.clipboard.writeText(code).then(function(){alert('Copied '+code+' — Use on SportyBet');});}
+function sportyLink(){window.open('https://www.sportybet.com/ng/','_blank');}
+function matchCardHTML(m,showPick){var riskClass=m.risk==='Low'?'risk-low':m.risk==='Med'?'risk-med':'risk-high';return '<div class="match-card"><div class="match-top"><span class="league">'+m.league+' • '+m.date+' '+m.time+'</span><span class="conf">CONF '+m.confidence+'% • EDGE '+m.edge+'%</span></div><div class="teams">'+m.home+' vs '+m.away+'</div><div class="market">'+m.market+' @ '+m.bookOdds+' — Model '+m.modelProb+'%</div><div class="meta"><span class="pill">Strength '+m.strengthHome+' vs '+m.strengthAway+'</span><span class="pill">Form '+m.formHomeScore+'%</span><span class="pill">xG '+m.xgHome+'</span><span class="pill '+riskClass+'">Risk '+m.risk+'</span><span class="pill">'+m.stake+'</span><span class="pill">EV '+m.ev+'%</span></div><div class="code-box" style="margin-bottom:10px">Code '+m.code+' — '+m.home+' '+m.market+'</div><div class="actions"><button class="btn-sm yellow" onclick="copyCode(''+m.code+'')">Copy Code</button><a class="btn-sm" href="https://www.sportybet.com/ng/" target="_blank">SportyBet</a>'+(showPick?'<span class="btn-sm" style="border-color:var(--teal);color:var(--teal)">AI Pick</span>':'')+'</div></div>';}
+function renderDashboard(){var el=document.getElementById('page-dashboard');var autoPicks=matches.filter(function(m){return parseFloat(m.edge)>3&&parseFloat(m.confidence)>60;}).slice(0,6);var profit=history.filter(function(h){return h.result==='WON';}).length*120-history.filter(function(h){return h.result==='LOST';}).length*100;var html='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px"><h2 style="font-size:22px;letter-spacing:-.02em">Dashboard</h2><div class="row"><div class="toggle '+(autoPickEnabled?'on':'')+'" onclick="toggleAutoPick()"><i></i></div><span class="small">Auto Pick</span><div class="toggle '+(autoGenEnabled?'on':'')+'" onclick="toggleAutoGen()" style="margin-left:8px"><i></i></div><span class="small">Auto Generator AI</span><div class="toggle '+(autoRefreshEnabled?'on':'')+'" onclick="toggleAutoRefresh()" style="margin-left:8px"><i></i></div><span class="small">Auto Refresh 60s</span></div></div>';html+='<div class="grid3" style="margin-bottom:16px"><div class="card kpi"><h3>Analyzed</h3><div class="val">'+matches.length+'</div><div class="sub">Next 7 days auto</div></div><div class="card kpi"><h3>AI Picks</h3><div class="val" style="color:var(--teal)">'+autoPicks.length+'</div><div class="sub">Edge >3% Conf >60%</div></div><div class="card kpi"><h3>History P/L</h3><div class="val" style="color:'+(profit>=0?'var(--teal)':'#FF5A5A')+'">'+(profit>=0?'+':'')+profit+'</div><div class="sub">Preserved completed</div></div></div>';html+='<div class="tabs"><button class="tab active" onclick="filterDash('all',this)">All</button><button class="tab" onclick="filterDash('today',this)">Today</button><button class="tab" onclick="filterDash('tomorrow',this)">Tomorrow</button><button class="tab" onclick="filterDash('weekend',this)">Weekend</button></div>';html+='<div id="dashList" style="display:grid;gap:12px">'+autoPicks.map(function(m){return matchCardHTML(m,true);}).join('')+'</div>';html+='<div class="disclaimer">Model: Strength 40% + Form 25% + xG 20% + H2H 10% + Motivation 5% = real probability. Auto picks best where edge >3% confidence >60%. Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory.</div>';el.innerHTML=html;}
+function filterDash(type,btn){document.querySelectorAll('#page-dashboard .tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');var list=document.getElementById('dashList');var filtered=matches;var today=new Date().toISOString().slice(0,10);var tomorrow=new Date(Date.now()+86400000).toISOString().slice(0,10);if(type==='today')filtered=matches.filter(function(m){return m.date===today;});if(type==='tomorrow')filtered=matches.filter(function(m){return m.date===tomorrow;});if(type==='weekend'){filtered=matches.filter(function(m){var d=new Date(m.date).getDay();return d===0||d===6;});}filtered=filtered.filter(function(m){return parseFloat(m.edge)>3&&parseFloat(m.confidence)>60;}).slice(0,8);list.innerHTML=filtered.map(function(m){return matchCardHTML(m,true);}).join('')||'<div class="card small">No picks for filter — try All</div>';}
+function toggleAutoPick(){autoPickEnabled=!autoPickEnabled;renderDashboard();}
+function toggleAutoGen(){autoGenEnabled=!autoGenEnabled;if(autoGenEnabled){generateMatches();renderDashboard();}}
+function toggleAutoRefresh(){autoRefreshEnabled=!autoRefreshEnabled;startAutoRefresh();renderDashboard();}
+function renderAutoPick(){var el=document.getElementById('page-autopick');var picks=matches.filter(function(m){return parseFloat(m.edge)>3&&parseFloat(m.confidence)>60;}).sort(function(a,b){return parseFloat(b.ev)-parseFloat(a.ev);});var html='<h2 style="font-size:22px;margin-bottom:8px">AI Auto-Pick</h2><div class="small" style="margin-bottom:12px">Analyse upcoming matches and suggest selections. Model Strength 40% + Form 25% + xG 20% + H2H 10% + Motivation 5% = real probability. Auto picks best where edge >3% confidence >60%. Stake suggestion, expected value, risk Low/Med/High, auto refresh 60s, AI Generated timestamp</div>';html+='<div class="card" style="margin-bottom:12px"><div class="row" style="justify-content:space-between"><span class="small">AI picks '+picks.length+' • Auto Refresh 60s • '+new Date().toLocaleString()+'</span><button class="btn-sm yellow" style="max-width:140px" onclick="generateMatches();renderAutoPick();updateAiTime()">Refresh AI</button></div></div>';html+='<div style="display:grid;gap:12px">'+picks.map(function(m){return matchCardHTML(m,true);}).join('')+'</div>';html+='<div class="disclaimer">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory.</div>';el.innerHTML=html;}
+function renderAnalysis(){var el=document.getElementById('page-analysis');var options=matches.map(function(m){return '<option value="'+m.id+'">'+m.home+' vs '+m.away+' — '+m.date+'</option>';}).join('');var html='<h2 style="font-size:22px;margin-bottom:8px">Match Analysis</h2><div class="small" style="margin-bottom:12px">Team form W-W-D-W-L, goals scored/conceded avg, shots on target avg, xG, H2H last 5 results, strength bars, professional analysis text</div><select id="analysisSelect" class="select" onchange="updateAnalysis()">'+options+'</select><div id="analysisDetail" style="margin-top:12px"></div>';el.innerHTML=html;updateAnalysis();}
+function updateAnalysis(){var sel=document.getElementById('analysisSelect');if(!sel)return;var m=matches.find(function(x){return x.id===sel.value;});if(!m)return;var detail=document.getElementById('analysisDetail');var html='<div class="card"><div class="teams">'+m.home+' vs '+m.away+'</div><div class="small" style="margin-bottom:12px">'+m.league+' • '+m.date+' '+m.time+' • Code '+m.code+'</div><div class="grid2"><div class="card2"><h3 class="small" style="margin-bottom:8px;font-weight:700;color:var(--text)">'+m.home+'</h3><div class="small">Form '+m.formHome+' • Score '+m.formHomeScore+'%</div><div class="small">Goals Scored Avg '+m.goalsScoredHome+' • Conceded '+m.goalsConcededHome+'</div><div class="small">Shots on Target Avg '+m.shotsHome+' • xG '+m.xgHome+'</div><div style="margin-top:8px"><div class="small">Strength '+m.strengthHome+'%</div><div class="progress"><i style="width:'+m.strengthHome+'%"></i></div></div><div style="margin-top:8px"><div class="small">Motivation '+m.motivationHome+'%</div><div class="progress"><i style="width:'+m.motivationHome+'%;background:var(--yellow)"></i></div></div></div><div class="card2"><h3 class="small" style="margin-bottom:8px;font-weight:700;color:var(--text)">'+m.away+'</h3><div class="small">Goals Avg '+(2.4-parseFloat(m.goalsScoredHome)).toFixed(1)+' • Conceded '+(1.6-parseFloat(m.goalsConcededHome)).toFixed(1)+'</div><div class="small">Shots Avg '+m.shotsAway+' • xG '+m.xgAway+'</div><div style="margin-top:8px"><div class="small">Strength '+m.strengthAway+'%</div><div class="progress"><i style="width:'+m.strengthAway+'%"></i></div></div></div></div><div class="card2" style="margin-top:12px"><div class="small">H2H Last 5: '+m.h2h+'</div><div class="small" style="margin-top:6px">Model Probability '+m.modelProb+'% • Book Odds '+m.bookOdds+' • Edge '+m.edge+'% • Confidence '+m.confidence+'% • EV '+m.ev+'% • Risk '+m.risk+'</div><div class="small" style="margin-top:10px;line-height:1.7">Professional Analysis: '+m.home+' shows stronger strength '+m.strengthHome+' vs '+m.strengthAway+' with form '+m.formHome+' indicating stability. xG '+m.xgHome+' suggests higher chance creation. H2H '+m.h2h+' slightly favors home. Motivation '+m.motivationHome+'% high. Recommended '+m.market+' offers edge '+m.edge+'% with confidence '+m.confidence+'%. Stake '+m.stake+'. However, no outcome is guaranteed. Use responsible bankroll management.</div></div><div class="actions" style="margin-top:12px"><button class="btn-sm yellow" onclick="copyCode(''+m.code+'')">Copy Code '+m.code+'</button><a class="btn-sm" href="https://www.sportybet.com/ng/" target="_blank">Open SportyBet</a></div></div>';detail.innerHTML=html;}
+function renderChecker(){var el=document.getElementById('page-checker');var html='<h2 style="font-size:22px;margin-bottom:8px">Bet Slip Checker</h2><div class="small" style="margin-bottom:12px">Review uploaded betting slips and flag risky selections. Paste booking code or selections list, Check Slip button, AI flags risky if odds <1.30 or >3.50, edge <2%, confidence <55%, form poor, H2H bad, shows risk Low/Med/High/Very Risky with reasons</div><div class="card"><textarea id="slipInput" class="textarea" placeholder="Paste booking code e.g. KZ-123456 or list:\nMan City vs Arsenal - Home Win @1.85\nReal Madrid vs Barcelona - Over 1.5 @1.35"></textarea><div class="actions" style="margin-top:10px"><button class="btn-sm yellow" onclick="checkSlip()">Check Slip</button><button class="btn-sm" onclick="document.getElementById(\'slipInput\').value=\'\'">Clear</button></div><div id="slipResult" style="margin-top:12px"></div></div>';el.innerHTML=html;}
+function checkSlip(){var input=document.getElementById('slipInput').value.trim();var result=document.getElementById('slipResult');if(!input){result.innerHTML='<div class="small">Paste a code or selections</div>';return;}var lines=input.split('\n').filter(function(l){return l.trim().length>2;});var html='<div style="display:grid;gap:8px">';var riskyCount=0;lines.forEach(function(line){var oddsMatch=line.match(/@([0-9.]+)/);var odds=oddsMatch?parseFloat(oddsMatch[1]):2.0;var m=pick(matches);var reasons=[];var risk='Low';if(odds<1.30){reasons.push('Odds '+odds+' <1.30 low value');risk='Very Risky';}if(odds>3.50){reasons.push('Odds '+odds+' >3.50 high variance');risk='High';}if(parseFloat(m.edge)<2){reasons.push('Edge '+m.edge+'% <2%');if(risk==='Low')risk='Med';}if(parseFloat(m.confidence)<55){reasons.push('Confidence '+m.confidence+'% <55%');risk='High';}if(parseFloat(m.formHomeScore)<55){reasons.push('Form poor '+m.formHome+'');if(risk==='Low')risk='Med';}if(m.h2h.indexOf('A')>-1&&m.h2h.indexOf('H')==-1){reasons.push('H2H bad '+m.h2h);if(risk!=='Very Risky')risk='High';}if(reasons.length===0){reasons.push('Selection looks balanced — Strength '+m.strengthHome+'%, Edge '+m.edge+'%');}if(risk!=='Low')riskyCount++;var riskClass=risk==='Low'?'risk-low':risk==='Med'?'risk-med':'risk-high';html+='<div class="card2"><div class="row" style="justify-content:space-between"><span class="small" style="font-weight:700;color:var(--text)">'+line.slice(0,60)+'</span><span class="pill '+riskClass+'">'+risk+'</span></div><div class="small" style="margin-top:6px">'+reasons.join(' • ')+'</div><div class="small" style="margin-top:4px">Ref '+m.home+' vs '+m.away+' • Conf '+m.confidence+'% • Code '+m.code+'</div></div>';});html+='</div>';html+='<div class="card" style="margin-top:12px"><div class="small">Checked '+lines.length+' selections • Risky '+riskyCount+' • '+(riskyCount>lines.length/2?'⚠️ Too many risky — consider reducing':'✅ Slip looks manageable')+'</div><div class="actions" style="margin-top:8px"><button class="btn-sm yellow" onclick="copyCode(\'KZ-'+Math.floor(Math.random()*900000+100000)+'\')">Copy Safe Code</button><a class="btn-sm" href="https://www.sportybet.com/ng/" target="_blank">SportyBet</a></div></div>';result.innerHTML=html;}
+function renderBuilder(){var el=document.getElementById('page-builder');var html='<h2 style="font-size:22px;margin-bottom:8px">Ticket Builder</h2><div class="small" style="margin-bottom:12px">Combine selections and estimate overall risk. Checkboxes select matches, builds ticket, combined odds, total stake, potential return, overall risk estimation, expected value, code KZ-TICKET-XXXX, Copy Code, SportyBet link, warns if too many risky</div><div class="card" style="margin-bottom:12px"><div class="row" style="justify-content:space-between"><span class="small">Select matches for ticket</span><span class="small">Selected: <b id="ticketCount">0</b></span></div><div id="builderList" style="display:grid;gap:8px;margin-top:12px"></div><div id="ticketSummary" style="margin-top:12px"></div></div>';el.innerHTML=html;renderBuilderList();}
+function renderBuilderList(){var list=document.getElementById('builderList');if(!list)return;var html='';matches.slice(0,10).forEach(function(m){var checked=selectedTicket[m.id]?'checked':'';html+='<div class="card2" style="display:flex;gap:10px;align-items:center"><input type="checkbox" '+checked+' onchange="toggleTicket(\''+m.id+'\')" style="width:18px;height:18px"><div style="flex:1"><div class="small" style="font-weight:700;color:var(--text)">'+m.home+' vs '+m.away+' — '+m.market+' @ '+m.bookOdds+'</div><div class="small">'+m.league+' • '+m.date+' • Risk '+m.risk+' • Conf '+m.confidence+'% • Code '+m.code+'</div></div></div>';});list.innerHTML=html;updateTicketSummary();}
+function toggleTicket(id){if(selectedTicket[id])delete selectedTicket[id];else selectedTicket[id]=true;renderBuilderList();}
+function updateTicketSummary(){var ids=Object.keys(selectedTicket);var countEl=document.getElementById('ticketCount');if(countEl)countEl.textContent=ids.length;var summary=document.getElementById('ticketSummary');if(!summary)return;if(ids.length===0){summary.innerHTML='<div class="small">Select at least 2 matches to build ticket</div>';return;}var selected=matches.filter(function(m){return selectedTicket[m.id];});var combined=1;selected.forEach(function(m){combined*=parseFloat(m.bookOdds);});var stake=100*ids.length;var ret=(combined*stake).toFixed(0);var avgConf=selected.reduce(function(a,m){return a+parseFloat(m.confidence);},0)/selected.length;var risky=selected.filter(function(m){return m.risk==='High'||m.risk==='Very Risky';}).length;var ev=selected.reduce(function(a,m){return a+parseFloat(m.ev);},0)/selected.length;var overallRisk=risky>selected.length/2?'Very Risky':risky>0?'High':avgConf>70?'Low':'Med';var riskClass=overallRisk==='Low'?'risk-low':overallRisk==='Med'?'risk-med':'risk-high';var code='KZ-TICKET-'+Math.floor(Math.random()*9000+1000);var warn=risky>selected.length/2?'<div class="small" style="margin-top:8px;color:#FF5A5A">⚠️ Warning: Too many risky selections ('+risky+'/'+selected.length+') — consider removing high risk picks</div>':'';summary.innerHTML='<div class="card2"><div class="grid2"><div><div class="small">Combined Odds</div><div style="font-size:20px;font-weight:800">'+combined.toFixed(2)+'</div></div><div><div class="small">Potential Return (Stake '+stake+')</div><div style="font-size:20px;font-weight:800;color:var(--teal)">₦'+ret+'</div></div><div><div class="small">Overall Risk</div><div><span class="pill '+riskClass+'">'+overallRisk+'</span></div></div><div><div class="small">Avg Confidence / EV</div><div class="small" style="font-weight:700;color:var(--text)">'+avgConf.toFixed(0)+'% / '+ev.toFixed(1)+'%</div></div></div><div class="code-box" style="margin-top:12px">'+code+' — '+selected.length+' picks</div>'+warn+'<div class="actions" style="margin-top:10px"><button class="btn-sm yellow" onclick="copyCode(\''+code+'\')">Copy Code</button><a class="btn-sm" href="https://www.sportybet.com/ng/" target="_blank">SportyBet</a><button class="btn-sm" onclick="selectedTicket={};renderBuilderList()">Clear</button></div></div>';}
+function renderFixtures(){var el=document.getElementById('page-fixtures');var html='<h2 style="font-size:22px;margin-bottom:8px">Automatic Fixtures</h2><div class="small" style="margin-bottom:12px">Display upcoming matches and preserve completed-match history. Two tabs Upcoming (next 7 days auto) and History (preserved completed matches with result won/lost profit/loss tracking), auto updates, light localStorage</div><div class="tabs"><button class="tab active" id="tabUpcoming" onclick="switchFixture(\'upcoming\')">Upcoming</button><button class="tab" id="tabHistory" onclick="switchFixture(\'history\')">History</button></div><div id="fixtureContent"></div>';el.innerHTML=html;switchFixture('upcoming');}
+function switchFixture(type){document.querySelectorAll('#page-fixtures .tab').forEach(function(t){t.classList.remove('active');});var tab=document.getElementById(type==='upcoming'?'tabUpcoming':'tabHistory');if(tab)tab.classList.add('active');var content=document.getElementById('fixtureContent');if(!content)return;if(type==='upcoming'){content.innerHTML='<div style="display:grid;gap:12px">'+matches.map(function(m){return matchCardHTML(m,false);}).join('')+'</div>';}else{var html='<div style="display:grid;gap:8px">';history.forEach(function(h){var color=h.result==='WON'?'var(--teal)':'#FF5A5A';html+='<div class="card2"><div class="row" style="justify-content:space-between"><span class="small" style="font-weight:700;color:var(--text)">'+h.match+' • '+h.market+'</span><span class="pill" style="color:'+color+';border-color:'+color+'">'+h.result+'</span></div><div class="small" style="margin-top:6px">Date '+h.date+' • Odds '+h.odds+' • Code '+h.code+' • Profit '+(h.profit>=0?'+':'')+h.profit+'</div></div>';});html+='</div><div class="card" style="margin-top:12px"><div class="small">Total Preserved '+history.length+' • Won '+history.filter(function(h){return h.result==='WON';}).length+' • Lost '+history.filter(function(h){return h.result==='LOST';}).length+'</div></div>';content.innerHTML=html;}}
+function renderOwner(){var el=document.getElementById('page-owner');var users=[{name:'Clement Kayode',phone:'07067183541',plan:'Premium',status:'Active',paid:'₦25,000'},{name:'Musa Ibrahim',phone:'08031234567',plan:'Standard',status:'Pending',paid:'₦10,000'},{name:'Emeka John',phone:'09087654321',plan:'Premium',status:'Active',paid:'₦25,000'},{name:'Aisha Bello',phone:'07012345678',plan:'Basic',status:'Active',paid:'₦5,000'}];var html='<h2 style="font-size:22px;margin-bottom:8px">Owner Dashboard</h2><div class="small" style="margin-bottom:12px">Manage users, subscriptions and payments. Users list, subscription status, payments, Opay Clement Kayode 7067183541, approve users, view revenue, manage plans, owner only</div>';html+='<div class="grid3" style="margin-bottom:12px"><div class="card kpi"><h3>Revenue</h3><div class="val">₦65,000</div><div class="sub">This month</div></div><div class="card kpi"><h3>Users</h3><div class="val">'+users.length+'</div><div class="sub">Active '+(users.filter(function(u){return u.status==='Active';}).length)+'</div></div><div class="card kpi"><h3>Opay Account</h3><div class="val" style="font-size:14px">Clement Kayode 7067183541</div><div class="sub">Payments to Opay</div></div></div>';html+='<div class="card"><div class="small" style="font-weight:700;margin-bottom:10px">Users & Subscriptions</div>';users.forEach(function(u){html+='<div class="card2" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><div><div class="small" style="font-weight:700;color:var(--text)">'+u.name+' • '+u.phone+'</div><div class="small">'+u.plan+' • '+u.paid+'</div></div><div style="display:flex;gap:6px;align-items:center"><span class="pill '+(u.status==='Active'?'risk-low':'risk-med')+'">'+u.status+'</span><button class="btn-sm" style="width:auto;padding:0 10px">Approve</button></div></div>';});html+='</div>';html+='<div class="card" style="margin-top:12px"><div class="small" style="font-weight:700;margin-bottom:8px">Manage Plans</div><div class="grid3"><div class="card2"><div class="small" style="font-weight:700;color:var(--text)">Basic ₦5,000</div><div class="small">5 picks/day</div></div><div class="card2"><div class="small" style="font-weight:700;color:var(--text)">Standard ₦10,000</div><div class="small">15 picks/day</div></div><div class="card2"><div class="small" style="font-weight:700;color:var(--text)">Premium ₦25,000</div><div class="small">Unlimited + Ticket Builder</div></div></div></div>';el.innerHTML=html;}
+function renderAccount(){var el=document.getElementById('page-account');var html='<h2 style="font-size:22px;margin-bottom:8px">Account</h2><div class="card"><div class="row" style="gap:12px"><div class="brand-mark">C</div><div><div style="font-weight:800">Clement Kayode</div><div class="small">07067183541 • Premium • Active</div></div></div><div style="margin-top:16px" class="grid2"><div class="card2"><div class="small">Subscription</div><div style="font-weight:700;color:var(--text)">Premium — Valid till 30 days</div></div><div class="card2"><div class="small">Payments</div><div style="font-weight:700;color:var(--text)">Opay 7067183541 Clement Kayode</div></div></div><div class="actions" style="margin-top:16px"><button class="btn-sm yellow" onclick="localStorage.removeItem(\'kz_v35_logged\');location.reload()">Logout</button><a class="btn-sm" href="https://www.sportybet.com/ng/" target="_blank">SportyBet</a></div><div class="disclaimer" style="margin-top:16px">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory. Bookmaker Integration: Support booking codes where official integrations permit it. Code box KZ-XXXXXX, Copy Code, SportyBet https://www.sportybet.com/ng/, Bet9ja, 1xBet codes supported. Mobile-Friendly: Work in Chrome on your Android phone. Responsive, 42px hamburger, touch-friendly, 14px font.</div></div>';el.innerHTML=html;}
+if(localStorage.getItem('kz_v35_logged')==='1'){initApp();}
 </script>
 </body>
 </html>
