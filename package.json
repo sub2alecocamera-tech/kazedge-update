@@ -1,17 +1,13 @@
 {
-  "name": "kazedge-ultimate-master-v37-perfect",
-  "version": "37.0.0",
-  "description": "KAZEDGE V37 ULTIMATE MASTER PERFECT FINAL - All Buttons Working - Ready To Make Money",
+  "name": "kazedge-ultimate-master-v39-perfect",
+  "version": "39.0.0",
+  "description": "KAZEDGE V39 ULTIMATE MASTER PERFECT FINAL - All features, fresh daily games, mobile friendly, professional clean",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5"
-  },
-  "keywords": ["betting", "kazedge", "v37", "ultimate", "perfect"],
-  "author": "Clement Kayode - 07067183541",
-  "license": "MIT"
+  }
 }
