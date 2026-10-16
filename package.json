@@ -1,20 +1,17 @@
 {
-  "name": "kazedge-ultimate-master-v36-perfect",
-  "version": "36.0.0",
-  "description": "KAZEDGE V36 ULTIMATE MASTER PERFECT FINAL - LOGIN FIXED 100% - Instant login, owner bypass, no IndexedDB, no lockUntil",
+  "name": "kazedge-ultimate-master-v37-perfect",
+  "version": "37.0.0",
+  "description": "KAZEDGE V37 ULTIMATE MASTER PERFECT FINAL - All Buttons Working - Ready To Make Money",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["kazedge", "v36", "login-fixed", "betting", "nigeria", "ultimate-master"],
-  "author": "Clement Kayode - 07067183541",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+  "keywords": ["betting", "kazedge", "v37", "ultimate", "perfect"],
+  "author": "Clement Kayode - 07067183541",
+  "license": "MIT"
 }
