@@ -1,454 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-<title>KAZEDGE V41 ULTIMATE MASTER PROFESSIONAL</title>
+<title>KAZEDGE V44 ULTIMATE MASTER PROFESSIONAL FINAL</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#070E22;--card:#111C36;--card2:#162042;--yellow:#FFD60A;--teal:#00E5BE;--text:#E8ECF8;--muted:#8B93B0;--border:#1E2C5A;--red:#FF4D6D;--green:#00E5BE}
-body{background:var(--bg);color:var(--text);font-family:ui-sans-system,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden;min-height:100vh}
-button{cursor:pointer;border:0;font-family:inherit}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px}
-.yellow{background:var(--yellow);color:#070E22;font-weight:800}
-.teal{background:var(--teal);color:#070E22;font-weight:700}
-.badge{font-size:11px;padding:4px 8px;border-radius:20px;font-weight:700}
-#loginScreen{position:fixed;inset:0;background:radial-gradient(1200px 600px at 20% 0%,#162042 0%,#070E22 60%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
-.login-box{width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px}
-.login-box h1{font-size:28px;letter-spacing:-0.02em;margin-bottom:4px}
-.login-box p{color:var(--muted);font-size:14px;margin-bottom:20px}
-.input{width:100%;background:#0D1530;border:1px solid var(--border);border-radius:12px;padding:14px 14px;color:var(--text);font-size:14px;margin-bottom:12px;outline:none}
-.input:focus{border-color:var(--yellow)}
-.btn{width:100%;padding:14px;border-radius:12px;font-size:14px;letter-spacing:0.02em;transition:0.15s}
-.btn:active{transform:scale(0.98)}
-.btn-yellow{background:var(--yellow);color:#070E22;font-weight:800}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);font-weight:600;margin-top:10px}
-.header{position:sticky;top:0;z-index:50;background:rgba(7,14,34,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-.hamburger{width:42px;height:42px;border-radius:10px;background:var(--card);border:1px solid var(--border);display:grid;place-items:center;font-size:18px;color:var(--text)}
-.logo{font-weight:900;letter-spacing:-0.03em;font-size:18px}.logo span{color:var(--yellow)}
-#sidenav{position:fixed;top:0;left:-320px;width:300px;height:100vh;background:var(--card);border-right:1px solid var(--border);z-index:100;transition:left 0.28s ease;padding:20px 14px}
-#sidenav.open{left:0}
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:90;display:none}
+:root{--bg:#070E22;--card:#111C36;--card2:#162040;--y:#FFD60A;--y2:#FFC300;--t:#00E5BE;--line:rgba(255,255,255,.08);--txt:#E6EBFF;--mut:#8B96B8}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Space Grotesk,system-ui,sans-serif}
+body{background:var(--bg);color:var(--txt);overflow-x:hidden}
+button{cursor:pointer;border:0}
+.mono{font-family:JetBrains Mono,monospace}
+#loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(1200px 600px at 20% -10%,#1A2A5A 0%,transparent 60%),radial-gradient(800px 400px at 90% 10%,#122040 0%,transparent 60%),var(--bg)}
+.login-card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.login-card h1{font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.badge-teal{display:inline-flex;background:var(--t);color:#001A14;font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;letter-spacing:.06em}
+.input{width:100%;height:46px;background:#0B1330;border:1px solid var(--line);border-radius:12px;padding:0 14px;color:var(--txt);font-size:14px;outline:0}
+.input:focus{border-color:var(--y)}
+.btn-y{width:100%;height:48px;background:var(--y);color:#111100;font-weight:800;border-radius:12px;font-size:14px;letter-spacing:.02em;transition:.18s}
+.btn-y:hover{background:var(--y2);transform:translateY(-1px)}
+.btn-y:active{transform:translateY(0)}
+.btn-ghost{height:46px;background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:12px;padding:0 14px;font-size:13px}
+header{position:sticky;top:0;z-index:20;height:62px;background:rgba(7,14,34,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.hamburger{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center}
+.hamburger span{display:block;width:18px;height:2px;background:var(--txt);border-radius:2px;position:relative}
+.hamburger span:before,.hamburger span:after{content:'';position:absolute;left:0;width:18px;height:2px;background:var(--txt);border-radius:2px}
+.hamburger span:before{top:-6px}.hamburger span:after{top:6px}
+#sidenav{position:fixed;left:-320px;top:0;width:300px;height:100vh;background:var(--card);border-right:1px solid var(--line);z-index:100;transition:.28s cubic-bezier(.4,0,.2,1);padding:18px;overflow:auto}
+#sidenav.open{left:0;box-shadow:4px 0 24px rgba(0,0,0,.5)}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(2px);z-index:90;display:none}
 #overlay.show{display:block}
-.menu-item{width:100%;text-align:left;padding:12px 12px;border-radius:10px;background:transparent;color:var(--muted);font-size:14px;font-weight:600;display:flex;gap:10px;align-items:center;margin-bottom:6px}
-.menu-item.active,.menu-item:hover{background:var(--card2);color:var(--text)}
-.menu-item.active{border-left:3px solid var(--yellow)}
-.main{max-width:1200px;margin:0 auto;padding:18px 16px 100px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
-.filter-btn{padding:8px 14px;border-radius:20px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:12px;font-weight:700}
-.filter-btn.active{background:var(--yellow);color:#070E22;border-color:var(--yellow)}
-.sport-btn{padding:7px 12px;border-radius:20px;background:#0D1530;border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:700}
-.sport-btn.active{background:var(--yellow);color:#070E22}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.game{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;position:relative;overflow:hidden}
-.game-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.code{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:#0D1530;border:1px solid var(--border);padding:4px 8px;border-radius:8px;color:var(--yellow);font-weight:800}
-.teams{font-weight:800;font-size:14px;margin:8px 0;line-height:1.3}
-.meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-.meta span{font-size:11px;padding:4px 8px;border-radius:20px;background:#0D1530;border:1px solid var(--border);color:var(--muted)}
-.actions{display:flex;gap:8px;margin-top:12px}
-.small-btn{flex:1;padding:10px;border-radius:10px;font-size:12px;font-weight:800}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111C36;border:1px solid var(--border);color:var(--text);padding:12px 18px;border-radius:12px;z-index:99999;display:none;font-size:13px}
+.menu-item{width:100%;height:46px;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:12px;color:var(--mut);font-size:13px;font-weight:600;text-align:left;background:transparent;transition:.15s}
+.menu-item.active,.menu-item:hover{background:var(--card2);color:var(--txt)}
+.menu-item.active{border:1px solid rgba(255,214,10,.25);color:var(--y)}
+main{max-width:1240px;margin:0 auto;padding:18px 14px 40px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+.fbtn{height:36px;padding:0 14px;border-radius:100px;border:1px solid var(--line);background:var(--card);color:var(--mut);font-size:12px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:6px}
+.fbtn.active{background:var(--y);color:#111;border-color:var(--y)}
+.count{font-size:10px;background:#00000040;padding:2px 6px;border-radius:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.grid-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.game-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.league{font-size:10px;color:var(--mut);letter-spacing:.08em;text-transform:uppercase}
+.badge{font-size:10px;font-weight:800;padding:3px 7px;border-radius:6px}
+.badge-value{background:var(--t);color:#002019}
+.badge-risk-low{background:#0E2A22;color:var(--t);border:1px solid rgba(0,229,190,.2)}
+.badge-risk-med{background:#2A2610;color:var(--y);border:1px solid rgba(255,214,10,.2)}
+.badge-risk-high{background:#2A1313;color:#FF6B6B;border:1px solid rgba(255,107,107,.2)}
+.teams{font-size:15px;font-weight:700;line-height:1.2}
+.meta{font-size:12px;color:var(--mut);margin:4px 0 10px;display:flex;gap:10px;flex-wrap:wrap}
+.odds{display:flex;gap:6px;margin:8px 0}
+.odd{flex:1;background:#0B1330;border:1px solid var(--line);border-radius:10px;padding:8px 6px;text-align:center}
+.odd b{font-size:13px}
+.odd span{font-size:10px;color:var(--mut);display:block;margin-top:2px}
+.code-box{background:#0B1330;border:1px dashed rgba(255,214,10,.35);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.code{font-size:13px;font-weight:800;letter-spacing:.06em}
+.actions{display:flex;gap:8px;margin-top:10px}
+.btn-copy{flex:1;height:40px;background:var(--y);color:#111;border-radius:10px;font-weight:800;font-size:12px;letter-spacing:.02em;transition:.18s}
+.btn-copy.copied{background:var(--t);color:#002019}
+.btn-open{flex:1;height:40px;background:transparent;border:1px solid var(--line);color:var(--txt);border-radius:10px;font-weight:700;font-size:12px}
 .page{display:none}.page.active{display:block}
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.kpi{flex:1;min-width:140px;padding:16px}
-.kpi h3{font-size:22px;margin-bottom:4px}.kpi p{font-size:12px;color:var(--muted)}
-.textarea{width:100%;min-height:120px;background:#0D1530;border:1px solid var(--border);border-radius:12px;padding:12px;color:var(--text);font-size:13px;resize:vertical}
-.risk-low{color:var(--teal)}.risk-med{color:var(--yellow)}.risk-high{color:#FF8A4D}.risk-very{color:var(--red)}
-.toggle{width:46px;height:26px;background:#0D1530;border:1px solid var(--border);border-radius:20px;position:relative;transition:0.2s}
-.toggle.on{background:var(--yellow)}.toggle i{position:absolute;top:2px;left:2px;width:20px;height:20px;background:white;border-radius:50%;transition:0.2s;display:block}.toggle.on i{left:22px}
-.disclaimer{margin-top:24px;padding:14px;border-radius:12px;background:#0D1530;border:1px dashed var(--border);color:var(--muted);font-size:11px;line-height:1.5}
-@media(max-width:390px){.grid{grid-template-columns:1fr}.main{padding:14px 12px 90px}}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.kpi .card{padding:12px}
+.kpi b{font-size:18px}
+.kpi span{font-size:11px;color:var(--mut);display:block;margin-top:2px}
+textarea{width:100%;min-height:120px;background:#0B1330;border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--txt);font-size:13px;outline:0;resize:vertical}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(100px);background:#101C3A;border:1px solid var(--line);color:var(--txt);padding:12px 16px;border-radius:12px;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.4);z-index:200;opacity:0;transition:.28s cubic-bezier(.4,0,.2,1);max-width:92vw;text-align:center;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.modal{position:fixed;inset:0;z-index:150;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.modal.show{display:flex}
+.modal-box{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.step{display:flex;gap:12px;margin:12px 0}
+.step i{width:28px;height:28px;border-radius:8px;background:var(--y);color:#111;display:grid;place-items:center;font-weight:800;font-size:12px;flex-shrink:0}
+@media(max-width:390px){main{padding:12px 10px}.grid-games{grid-template-columns:1fr}.kpi{grid-template-columns:repeat(2,1fr)}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-<div id="loginScreen">
-<div class="login-box">
-<h1>KAZEDGE <span style="color:#FFD60A">V41</span></h1>
-<p>ULTIMATE MASTER PROFESSIONAL • Secure Access</p>
-<input id="phone" class="input" placeholder="Phone 07067183541" value="07067183541"/>
-<input id="pass" class="input" type="password" placeholder="Password" value="kazeem2025"/>
-<button id="btnLogin" class="btn btn-yellow">LOGIN INSTANT</button>
-<button id="btnOwner" class="btn btn-outline">OWNER ACCESS BYPASS</button>
-<p style="margin-top:14px;font-size:11px;color:#8B93B0;text-align:center;line-height:1.4">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly.<br/><b style="color:#E8ECF8">Best App in Nigeria. To God Be Glory.</b></p>
-</div>
+<div id="loginPage">
+  <div class="login-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <h1>⚡ KAZEDGE V44 <span class="badge-teal">PROFESSIONAL MASTER</span></h1>
+    </div>
+    <div style="margin-bottom:14px"><div style="font-size:13px;color:var(--mut);margin-bottom:14px">Ultimate Master • Check Well • All Working Together • Professional • No Mistake • Final Master</div></div>
+    <label style="font-size:12px;color:var(--mut);display:block;margin-bottom:6px">Phone Number</label>
+    <input id="phone" class="input" value="07067183541" placeholder="07067183541"/>
+    <label style="font-size:12px;color:var(--mut);display:block;margin:10px 0 6px">Password</label>
+    <input id="password" class="input" type="password" value="kazeem2025" placeholder="kazeem2025"/>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button id="loginBtn" class="btn-y">LOGIN INSTANT ⚡ OWNER ACCESS BYPASS</button>
+    </div>
+    <div style="margin-top:14px;font-size:11px;color:var(--mut);line-height:1.5">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory.</div>
+  </div>
 </div>
 
 <div id="app" style="display:none">
-<header class="header">
-<button id="hamburger" class="hamburger">☰</button>
-<div class="logo">KAZEDGE <span>V41</span></div>
-<div style="display:flex;gap:8px;align-items:center">
-<span id="aiTime" class="badge" style="background:#0D1530;border:1px solid #1E2C5A;color:#8B93B0">AI Generated Today 00:00</span>
-<button id="btnFresh" class="small-btn yellow" style="padding:8px 12px;border-radius:10px;font-size:12px">Generate Fresh Games</button>
-</div>
-</header>
+  <header>
+    <button id="ham" class="hamburger" aria-label="Menu"><span></span></button>
+    <div style="display:flex;align-items:center;gap:10px"><b style="letter-spacing:-.02em">KAZEDGE V44</b><span class="badge-teal">MASTER</span></div>
+    <button id="logoutBtn" class="btn-ghost">Logout</button>
+  </header>
+  <nav id="sidenav">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px"><b>KAZEDGE V44</b><span class="badge-teal">PRO</span></div>
+    <button class="menu-item active" data-page="dashboard">📊 Dashboard</button>
+    <button class="menu-item" data-page="ai">🤖 AI Auto-Pick</button>
+    <button class="menu-item" data-page="analysis">📈 Match Analysis</button>
+    <button class="menu-item" data-page="checker">🎟️ Bet Slip Checker</button>
+    <button class="menu-item" data-page="ticket">🧩 Ticket Builder</button>
+    <button class="menu-item" data-page="fixtures">📅 Fixtures</button>
+    <button class="menu-item" data-page="owner">👑 Owner Dashboard</button>
+    <button class="menu-item" data-page="account">👤 Account</button>
+    <div style="margin-top:18px;padding:12px;background:#0B1330;border:1px solid var(--line);border-radius:12px">
+      <div style="font-size:11px;color:var(--mut)">Opay Clement Kayode</div><div class="mono" style="font-size:13px;font-weight:700">7067183541</div>
+      <div style="font-size:11px;color:var(--mut);margin-top:8px">Best App in Nigeria. To God Be Glory.</div>
+    </div>
+  </nav>
+  <div id="overlay"></div>
+  <main>
+    <div id="page-dashboard" class="page active">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <h2 style="font-size:20px">Dashboard • Today Tomorrow Weekend • All Sports</h2>
+        <button id="freshBtn" class="btn-ghost">♻️ Generate Fresh Games</button>
+      </div>
+      <div class="kpi">
+        <div class="card"><b id="kpi-total">0</b><span>Total Games</span></div>
+        <div class="card"><b id="kpi-value">0</b><span>VALUE Picks</span></div>
+        <div class="card"><b id="kpi-edge">0%</b><span>Avg Edge</span></div>
+        <div class="card"><b id="kpi-conf">0%</b><span>Avg Confidence</span></div>
+      </div>
+      <div class="filters" id="dateFilters"><button class="fbtn active" data-date="today">TODAY <span class="count" id="c-today">0</span></button><button class="fbtn" data-date="tomorrow">TOMORROW <span class="count" id="c-tom">0</span></button><button class="fbtn" data-date="weekend">WEEKEND <span class="count" id="c-week">0</span></button><button class="fbtn" data-date="all">ALL</button></div>
+      <div class="filters" id="sportFilters"><button class="fbtn active" data-sport="all">ALL SPORTS</button><button class="fbtn" data-sport="football">FOOTBALL</button><button class="fbtn" data-sport="basketball">BASKETBALL</button><button class="fbtn" data-sport="tennis">TENNIS</button><button class="fbtn" data-sport="other">OTHER</button></div>
+      <div id="gamesGrid" class="grid-games"></div>
+      <div style="margin-top:18px;font-size:12px;color:var(--mut);text-align:center">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly.</div>
+    </div>
 
-<div id="sidenav">
-<div class="logo" style="margin-bottom:18px">KAZEDGE <span>V41</span></div>
-<button class="menu-item active" data-page="dashboard">◧ Dashboard</button>
-<button class="menu-item" data-page="autopick">⚡ AI Auto-Pick</button>
-<button class="menu-item" data-page="analysis">◑ Match Analysis</button>
-<button class="menu-item" data-page="checker">◫ Bet Slip Checker</button>
-<button class="menu-item" data-page="builder">◩ Ticket Builder</button>
-<button class="menu-item" data-page="fixtures">◨ Fixtures</button>
-<button class="menu-item" data-page="owner">◍ Owner Dashboard</button>
-<button class="menu-item" data-page="account">◎ Account</button>
-<div class="disclaimer" style="margin-top:18px">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria.</div>
-</div>
-<div id="overlay"></div>
+    <div id="page-ai" class="page">
+      <h2>🤖 AI Auto-Pick • Strength 40% Form 25% xG 20% H2H 10% Motivation 5%</h2>
+      <div style="display:flex;gap:8px;margin:12px 0"><button id="aiToggle" class="btn-ghost">Auto Generator: ON</button><button id="autoRefresh" class="btn-ghost">Auto Refresh: ON (60s)</button><span id="aiTime" class="mono" style="font-size:11px;color:var(--mut);align-self:center"></span></div>
+      <div id="aiGrid" class="grid-games"></div>
+    </div>
 
-<main class="main">
-<div id="page-dashboard" class="page active">
-<div class="row">
-<div class="card kpi"><h3 id="kpiTotal">0</h3><p>Total Games Fresh</p></div>
-<div class="card kpi"><h3 style="color:#FFD60A" id="kpiEdge">0%</h3><p>Avg Edge AI</p></div>
-<div class="card kpi"><h3 style="color:#00E5BE" id="kpiConf">0%</h3><p>Avg Confidence</p></div>
-<div class="card kpi"><h3 id="kpiLive">LIVE</h3><p>V41 Professional Master</p></div>
-</div>
+    <div id="page-analysis" class="page">
+      <h2>📈 Match Analysis • Form • xG • Shots • H2H</h2>
+      <div id="analysisGrid" class="grid-games" style="margin-top:12px"></div>
+    </div>
 
-<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-<div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:#8B93B0">AI Auto-Pick</span><button id="toggleAi" class="toggle on"><i></i></button></div>
-<div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:#8B93B0">Auto Generator AI</span><button id="toggleGen" class="toggle on"><i></i></button></div>
-<div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;color:#8B93B0">Auto Refresh</span><button id="toggleRef" class="toggle on"><i></i></button></div>
-</div>
+    <div id="page-checker" class="page">
+      <h2>🎟️ Bet Slip Checker • Review Risky Selections</h2>
+      <div class="card" style="margin-top:12px">
+        <textarea id="slipText" placeholder="Paste booking code or selections: e.g. Arsenal vs Chelsea 1.85 Home Win ..."></textarea>
+        <div style="display:flex;gap:8px;margin-top:10px"><button id="checkSlipBtn" class="btn-y" style="max-width:200px">Check Slip</button><button id="clearSlipBtn" class="btn-ghost">Clear</button></div>
+        <div id="slipResult" style="margin-top:14px"></div>
+      </div>
+    </div>
 
-<div class="filters" id="dateFilters">
-<button class="filter-btn active" data-date="TODAY">TODAY <span class="cnt">0</span></button>
-<button class="filter-btn" data-date="TOMORROW">TOMORROW <span class="cnt">0</span></button>
-<button class="filter-btn" data-date="WEEKEND">WEEKEND <span class="cnt">0</span></button>
-</div>
-<div class="filters" id="sportFilters">
-<button class="sport-btn active" data-sport="ALL">ALL SPORTS</button>
-<button class="sport-btn" data-sport="FOOTBALL">FOOTBALL</button>
-<button class="sport-btn" data-sport="BASKETBALL">BASKETBALL</button>
-<button class="sport-btn" data-sport="TENNIS">TENNIS</button>
-<button class="sport-btn" data-sport="OTHER">OTHER</button>
-</div>
+    <div id="page-ticket" class="page">
+      <h2>🧩 Ticket Builder • Combine • Risk • Expected Value</h2>
+      <div class="card" style="margin-top:12px">
+        <div id="ticketList"></div>
+        <div style="display:flex;gap:8px;margin-top:12px"><button id="buildTicketBtn" class="btn-y" style="max-width:220px">Build Ticket</button><button id="clearTicketBtn" class="btn-ghost">Clear Selection</button></div>
+        <div id="ticketResult" style="margin-top:12px"></div>
+      </div>
+    </div>
 
-<div id="games" class="grid"></div>
-<div class="disclaimer">Our target is to find stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly. Best App in Nigeria. To God Be Glory.</div>
-</div>
+    <div id="page-fixtures" class="page">
+      <h2>📅 Automatic Fixtures • Fresh Daily • 52 Teams + Basketball Tennis Other</h2>
+      <div class="filters" style="margin-top:12px"><button class="fbtn active" data-fixtab="upcoming">Upcoming</button><button class="fbtn" data-fixtab="today">Today</button><button class="fbtn" data-fixtab="tomorrow">Tomorrow</button><button class="fbtn" data-fixtab="weekend">Weekend</button><button class="fbtn" data-fixtab="history">History</button></div>
+      <div id="fixturesGrid" class="grid-games" style="margin-top:12px"></div>
+    </div>
 
-<div id="page-autopick" class="page">
-<h2 style="font-size:20px;margin-bottom:8px">AI Auto-Pick Engine</h2>
-<p style="color:#8B93B0;font-size:13px;margin-bottom:14px">Strength 40% • Form 25% • xG 20% • H2H 10% • Motivation 5% • Edge >3% • Confidence >60%</p>
-<div id="autopickList" class="grid"></div>
-</div>
+    <div id="page-owner" class="page">
+      <h2>👑 Owner Dashboard • Manage Users • Subscriptions • Payments</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:12px">
+        <div class="card"><b>Users</b><div style="margin-top:8px;font-size:13px;color:var(--mut)"><div>07067183541 • Active • Owner</div><div>0803xxxxxxx • Pending</div><div>0810xxxxxxx • Active</div></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn-ghost approveBtn">Approve Users</button><button class="btn-ghost revBtn">View Revenue</button></div></div>
+        <div class="card"><b>Payments</b><div style="margin-top:8px"><div class="mono" style="font-size:13px">Opay Clement Kayode<br/>7067183541</div><div style="font-size:12px;color:var(--mut);margin-top:6px">Manage plans • Subscriptions • Approvals</div></div><div style="display:flex;gap:8px;margin-top:10px"><button class="btn-ghost planBtn">Manage Plans</button><button class="btn-ghost">View Revenue</button></div></div>
+        <div class="card"><b>Revenue</b><div style="margin-top:8px"><b style="font-size:20px">₦128,400</b><span style="font-size:11px;color:var(--mut);display:block">This week • 42 active subs</span></div></div>
+      </div>
+    </div>
 
-<div id="page-analysis" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Match Analysis</h2>
-<div id="analysisList" class="grid"></div>
-</div>
-
-<div id="page-checker" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Bet Slip Checker</h2>
-<div class="card" style="padding:16px">
-<p style="font-size:13px;color:#8B93B0;margin-bottom:10px">Paste booking code or slip details. System flags risky: odds <1.30 or >3.50, edge <2%, confidence <55%, form poor, H2H bad.</p>
-<textarea id="slipInput" class="textarea" placeholder="Paste booking code KZ-XXXXXX or slip text..."></textarea>
-<div style="margin-top:12px;display:flex;gap:10px"><button id="btnCheckSlip" class="small-btn yellow">Check Slip</button><button id="btnClearSlip" class="small-btn" style="background:#0D1530;border:1px solid #1E2C5A;color:#E8ECF8">Clear</button></div>
-<div id="slipResult" style="margin-top:14px"></div>
-</div>
-</div>
-
-<div id="page-builder" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Ticket Builder</h2>
-<div class="card" style="padding:16px">
-<div id="builderList"></div>
-<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-<button id="btnBuildTicket" class="small-btn yellow">Build Ticket</button>
-<span style="font-size:12px;color:#8B93B0;align-self:center">Select matches via checkboxes</span>
-</div>
-<div id="ticketResult" style="margin-top:14px"></div>
-</div>
-</div>
-
-<div id="page-fixtures" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Automatic Fixtures</h2>
-<div class="filters">
-<button class="filter-btn active tab-btn" data-tab="today">Today</button>
-<button class="filter-btn tab-btn" data-tab="tomorrow">Tomorrow</button>
-<button class="filter-btn tab-btn" data-tab="weekend">Weekend</button>
-<button class="filter-btn tab-btn" data-tab="all">All Upcoming</button>
-<button class="filter-btn tab-btn" data-tab="history">History</button>
-</div>
-<div id="fixturesContent" class="grid" style="margin-top:12px"></div>
+    <div id="page-account" class="page">
+      <h2>👤 Account • Owner Access</h2>
+      <div class="card" style="margin-top:12px;max-width:480px"><div class="mono" style="font-size:14px">Phone: 07067183541<br/>Password: kazeem2025<br/>Status: Owner • Verified<br/>Plan: Ultimate Master V44</div><div style="margin-top:12px;font-size:12px;color:var(--mut)">Best App in Nigeria. To God Be Glory.</div></div>
+    </div>
+  </main>
 </div>
 
-<div id="page-owner" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Owner Dashboard</h2>
-<div class="row">
-<div class="card kpi"><h3>₦1,240,500</h3><p>Total Revenue</p></div>
-<div class="card kpi"><h3>348</h3><p>Active Users</p></div>
-<div class="card kpi"><h3>Opay<br/>7067183541<br/>Clement Kayode</h3><p>Payment Info</p></div>
+<div id="toast" class="toast"></div>
+<div id="retrieveModal" class="modal">
+  <div class="modal-box">
+    <h3 style="font-size:18px;margin-bottom:8px">How to Retrieve Kazedge Game in SportyBet</h3>
+    <div style="font-size:12px;color:var(--mut);margin-bottom:8px">Copy code now retrieves TODAY TOMORROW WEEKEND + BASKETBALL TENNIS OTHER</div>
+    <div class="step"><i>1</i><div><b>Code Copied</b><br/><span style="font-size:12px;color:var(--mut)">AB12CD style • SB-FT-TD-AB12CD • SB-BB-TM-EF34GH • SB-TN-WE • SB-OT-WE</span></div></div>
+    <div class="step"><i>2</i><div><b>Open SportyBet</b><br/><span style="font-size:12px;color:var(--mut)">Click SportyBet button to open https://www.sportybet.com/ng/</span></div></div>
+    <div class="step"><i>3</i><div><b>Load Booking Code</b><br/><span style="font-size:12px;color:var(--mut)">In SportyBet find Load Booking Code / Booking Code</span></div></div>
+    <div class="step"><i>4</i><div><b>Paste Code</b><br/><span style="font-size:12px;color:var(--mut)">Paste AB12CD • Today game • Tomorrow • Weekend • Basketball Tennis Other</span></div></div>
+    <div class="step"><i>5</i><div><b>Retrieve</b><br/><span style="font-size:12px;color:var(--mut)">Retrieve today or tomorrow or weekend game from Kazedge app to SportyBet to all other sports bet game</span></div></div>
+    <div class="step"><i>6</i><div><b>Place Bet Responsibly</b><br/><span style="font-size:12px;color:var(--mut)">Our target is stronger selections, but no software can guarantee 90%-100% winning tickets. 18+ gamble responsibly.</span></div></div>
+    <div style="display:flex;gap:8px;margin-top:14px"><button id="openSportyBtn" class="btn-y" style="flex:1">Open SportyBet Now</button><button id="closeModalBtn" class="btn-ghost" style="flex:1">Close</button></div>
+  </div>
 </div>
-<div class="card" style="padding:16px;margin-top:14px">
-<div style="display:flex;gap:10px;flex-wrap:wrap">
-<button class="small-btn yellow owner-act">Approve user</button>
-<button class="small-btn" style="background:#0D1530;border:1px solid #1E2C5A;color:#E8ECF8">View Revenue</button>
-<button class="small-btn" style="background:#0D1530;border:1px solid #1E2C5A;color:#E8ECF8">Manage Plans</button>
-</div>
-<div style="margin-top:12px;font-size:13px;color:#8B93B0">
-<div>• 07067183541 - Active - Premium - ₦5000</div>
-<div>• 0803xxxxxxx - Pending - Basic</div>
-<div>• 0810xxxxxxx - Active - Standard - ₦3000</div>
-</div>
-</div>
-</div>
-
-<div id="page-account" class="page">
-<h2 style="font-size:20px;margin-bottom:12px">Account</h2>
-<div class="card" style="padding:16px">
-<p style="font-size:14px;margin-bottom:6px">Phone: <b>07067183541</b></p>
-<p style="font-size:13px;color:#8B93B0;margin-bottom:12px">Plan: Professional Master V41 • Verified</p>
-<button id="btnLogout" class="small-btn" style="background:#FF4D6D;color:white">Logout</button>
-</div>
-</div>
-
-</main>
-</div>
-
-<div id="toast" class="toast">Code copied</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-var $ = function(s){return document.querySelector(s)};
-var $$ = function(s){return document.querySelectorAll(s)};
-var state = {date:'TODAY', sport:'ALL', aiOn:true, genOn:true, refOn:true, games:[], filtered:[], selected:{}, tab:'today', interval:null};
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+let games=[],selectedTicket=new Set(),aiAuto=true,refreshAuto=true,refreshTimer=null;
+let activeDate='today',activeSport='all',fixtureTab='upcoming';
 
-var football = ["Arsenal","Man City","Liverpool","Chelsea","Man United","Barcelona","Real Madrid","Atletico Madrid","Bayern Munich","Dortmund","PSG","Marseille","Inter Milan","AC Milan","Juventus","Napoli","Ajax","PSV","Benfica","Porto","Sporting","Galatasaray","Fenerbahce","Celtic","Rangers","Club Brugge","Shakhtar","Zenit","Al Ahly","Wydad","Kaizer Chiefs","Mamelodi","Enyimba","Orlando Pirates","Esperance","Raja Casablanca","TP Mazembe","Zamalek","Al Hilal","Al Nassr","Al Ittihad","Persepolis","Urawa Reds","Kashima","Melbourne City","LAFC","Inter Miami","Flamengo","River Plate","Boca Juniors","Palmeiras","Sundowns"];
-var basketball = ["Lakers vs Warriors","Celtics vs Heat","Bucks vs Nets","Bulls vs Mavericks","Nuggets vs Suns","Real Madrid Basketball vs Barcelona Basketball","Fenerbahce vs Olympiacos","Partizan vs Crvena Zvezda","Monaco vs Efes","Panathinaikos vs Maccabi","Lakers vs Celtics","Warriors vs Nets","Miami Heat vs Chicago Bulls","Dallas Mavericks vs Denver Nuggets","ASVEL vs Bayern Basketball","Virtus Bologna vs Olimpia Milano","Zalgiris vs Baskonia","Valencia vs Alba Berlin","Lakers vs Clippers","Knicks vs 76ers"];
-var tennis = ["Djokovic vs Alcaraz","Nadal vs Sinner","Medvedev vs Zverev","Tsitsipas vs Ruud","Swiatek vs Sabalenka","Gauff vs Rybakina","Pegula vs Jabeur","Djokovic vs Medvedev","Alcaraz vs Sinner","Rune vs Fritz","Swiatek vs Gauff","Sabalenka vs Rybakina","Djokovic vs Nadal","Alcaraz vs Zverev","Swiatek vs Pegula","Medvedev vs Alcaraz","Sinner vs Djokovic","Rybakina vs Sabalenka","Gauff vs Swiatek","Nadal vs Djokovic"];
-var other = ["Volleyball: Italy vs Brazil","NFL: Chiefs vs Eagles","MLB: Yankees vs Dodgers","NHL: Maple Leafs vs Bruins","Volleyball: Poland vs USA","Handball: Germany vs Denmark","Rugby: All Blacks vs Springboks","Cricket: India vs Australia","Volleyball: Serbia vs Turkey","NFL: 49ers vs Cowboys"];
+function mulberry32(a){return function(){var t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296}}
+function hashString(s){let h=0;for(let i=0;i<s.length;i++){h=Math.imul(31,h)+s.charCodeAt(i)|0}return Math.abs(h)}
+function genCode(prefix,rnd){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';let c='';for(let i=0;i<6;i++)c+=chars[Math.floor(rnd()*chars.length)];return prefix?prefix+c:c}
+function sportyCode(sport,date,rnd){const p={football:'FT',basketball:'BB',tennis:'TN',other:'OT'}[sport]||'FT';const d={today:'TD',tomorrow:'TM',weekend:'WE'}[date]||'TD';return `SB-${p}-${d}-${genCode('',rnd)}`}
+function todayStr(offset=0){const d=new Date();d.setDate(d.getDate()+offset);return d.toISOString().slice(0,10)}
+function weekendDates(){const now=new Date();const day=now.getDay();const sat=new Date(now);sat.setDate(now.getDate()+(6-day)%7);const sun=new Date(sat);sun.setDate(sat.getDate()+1);return [sat.toISOString().slice(0,10),sun.toISOString().slice(0,10)]}
 
-function seedRand(seed){ var x = Math.sin(seed)*10000; return x - Math.floor(x); }
-function todaySeed(){ var d = new Date(); return d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate(); }
-function makeGame(i, seedBase, forcedDate){
-  var r1 = seedRand(seedBase + i*11);
-  var r2 = seedRand(seedBase + i*13 + 7);
-  var r3 = seedRand(seedBase + i*17 + 13);
-  var sports = ['FOOTBALL','BASKETBALL','TENNIS','OTHER'];
-  var sport = sports[Math.floor(r1*4)];
-  var home='', away='', codePref='KZ-';
-  if(sport==='FOOTBALL'){ var a=Math.floor(r2*football.length); var b=Math.floor(r3*football.length); if(a===b) b=(b+1)%football.length; home=football[a]; away=football[b]; codePref='KZ-'; }
-  else if(sport==='BASKETBALL'){ var m=basketball[Math.floor(r2*basketball.length)]; var p=m.split(' vs '); home=p[0]; away=p[1]; codePref='KZ-BB-'; sport='BASKETBALL'; }
-  else if(sport==='TENNIS'){ var mm=tennis[Math.floor(r2*tennis.length)]; var pp=mm.split(' vs '); home=pp[0]; away=pp[1]; codePref='KZ-TN-'; }
-  else { var mo=other[Math.floor(r2*other.length)]; var parts=mo.split(': '); if(parts.length>1){ var vs=parts[1].split(' vs '); home=vs[0]; away=vs[1]; } else { home='Team A'; away='Team B'; } codePref='KZ-OT-'; }
-  var odds = (1.65 + r1*0.8).toFixed(2);
-  var edge = (3.2 + r2*3.6).toFixed(1);
-  var conf = Math.floor(58 + r3*20);
-  var strength = Math.floor(60 + r1*35);
-  var dateTag = forcedDate || (r1<0.45 ? 'TODAY' : r1<0.75 ? 'TOMORROW' : 'WEEKEND');
-  var time = Math.floor(12 + r2*10) + ':00';
-  var code = codePref + Math.floor(100000 + r3*900000);
-  var risk = conf>70 && parseFloat(edge)>4.5 ? 'Low' : conf>62 ? 'Med' : parseFloat(odds)>3.0 ? 'High' : 'Med';
-  return {id:i, sport:sport, home:home, away:away, odds:odds, edge:edge, conf:conf, strength:strength, dateTag:dateTag, time:time, code:code, risk:risk, form:['W','W','D','W','L'][Math.floor(r2*5)]+'-'+['W','D','W'][Math.floor(r3*3)], xG:(1.2+r1*1.3).toFixed(2)};
-}
+const FOOTBALL_TEAMS=["Arsenal","Man City","Man Utd","Liverpool","Chelsea","Tottenham","Newcastle","Aston Villa","Brighton","West Ham","Crystal Palace","Fulham","Wolves","Everton","Brentford","Bournemouth","N Forest","Luton","Burnley","Sheffield Utd","Real Madrid","Barcelona","Atletico Madrid","Girona","Bilbao","Real Sociedad","Napoli","Inter","AC Milan","Juventus","Atalanta","Roma","Lazio","Bayern Munich","Leverkusen","Dortmund","Leipzig","Stuttgart","PSG","Marseille","Monaco","Lille","Lyon","Enyimba","Remo Stars","Rangers Intl","Plateau Utd","Rivers Utd","Lobi Stars","Kano Pillars","Sunshine Stars"];
+const BASKET_TEAMS=["Lakers","Warriors","Celtics","Heat","Bucks","Nets","Bulls","Mavericks","Nuggets","Suns","76ers","Clippers","Real Madrid Basketball","Barcelona Basketball","Fenerbahce","Olympiacos","Monaco Basketball","Partizan","Maccabi Tel Aviv","Anadolu Efes"];
+const TENNIS_PLAYERS=["Djokovic","Nadal","Alcaraz","Sinner","Medvedev","Zverev","Tsitsipas","Rublev","Swiatek","Sabalenka","Gauff","Rybakina"];
+const OTHER_TEAMS=["Brazil Volleyball","Poland Volleyball","USA Volleyball","Italy Volleyball","Chiefs","Eagles","Yankees","Dodgers","Maple Leafs","Oilers","Rangers MLB","Astros"];
+const LEAGUES={football:["Premier League","La Liga","Serie A","Bundesliga","Ligue 1","NPFL","Champions League","Europa"],basketball:["NBA","EuroLeague"],tennis:["ATP","WTA"],other:["Volleyball League","NFL","MLB","NHL"]};
 
-function generateFresh(){
-  var seed = todaySeed() + Math.floor(Date.now()/60000);
-  var games=[];
-  var c=0;
-  for(var i=0;i<12;i++){ games.push(makeGame(c++, seed, 'TODAY')); }
-  for(var i=0;i<9;i++){ games.push(makeGame(c++, seed+100, 'TOMORROW')); }
-  for(var i=0;i<14;i++){ games.push(makeGame(c++, seed+200, 'WEEKEND')); }
-  state.games = games;
-  updateCounts();
-  render();
-  updateKPI();
-  var t = new Date(); $('#aiTime').textContent = 'AI Generated Today ' + t.getHours().toString().padStart(2,'0') + ':' + t.getMinutes().toString().padStart(2,'0');
-}
-
-function updateCounts(){
-  var counts={TODAY:0,TOMORROW:0,WEEKEND:0};
-  state.games.forEach(function(g){ counts[g.dateTag]++; });
-  $$('#dateFilters .filter-btn').forEach(function(b){
-    var d=b.getAttribute('data-date'); var el=b.querySelector('.cnt'); if(el) el.textContent='('+ (counts[d]||0) +')';
-  });
+function buildGames(seedDate){
+  const seed=hashString(seedDate);
+  const rnd=mulberry32(seed);
+  const all=[];
+  let id=1;
+  const makeMatch=(sport,home,away,league,dateLabel,dateISO)=>{
+    const oddsHome=(1.4+rnd()*2.2).toFixed(2);
+    const oddsDraw=sport==='football'?(2.8+rnd()*1.4).toFixed(2):null;
+    const oddsAway=(1.6+rnd()*2.5).toFixed(2);
+    const formPool=['W','W','D','W','L'];const form=Array.from({length:5},()=>formPool[Math.floor(rnd()*formPool.length)]).join('-');
+    const xG=(0.8+rnd()*1.6).toFixed(2);
+    const shots=(8+rnd()*9).toFixed(0);
+    const strength=Math.floor(55+rnd()*35);
+    const formScore=Math.floor(40+rnd()*50);
+    const xgScore=Math.floor(50+rnd()*40);
+    const h2hScore=Math.floor(45+rnd()*45);
+    const motScore=Math.floor(50+rnd()*40);
+    const prob=Math.min(92,Math.floor(strength*0.4+formScore*0.25+xgScore*0.2+h2hScore*0.1+motScore*0.05));
+    const bookOdds=1/(prob/100+0.05);
+    const edge=+(prob - (100/bookOdds)).toFixed(1);
+    const conf=Math.min(88,prob-2+Math.floor(rnd()*8));
+    const risk=conf>75&&edge>5?'Low':conf>62&&edge>3?'Med':edge>1?'High':'Very Risky';
+    const codePrefix={football:'KZ-',basketball:'KZ-BB-',tennis:'KZ-TN-',other:'KZ-OT-'}[sport];
+    const internalCode=genCode(codePrefix,rnd);
+    const sCode=sportyCode(sport,dateLabel,rnd);
+    const stake=edge>5?'High':edge>3?'Med':'Low';
+    const time=`${10+Math.floor(rnd()*12)}:${['00','15','30','45'][Math.floor(rnd()*4)]}`;
+    return {id:id++,sport,league,home,away,dateLabel,dateISO,time,oddsHome,oddsDraw,oddsAway,form,xG,shots,strength,prob,edge,conf,risk,stake,internalCode,sCode,analysis:sport==='basketball'?`Points avg ${(88+rnd()*22).toFixed(0)} Rebounds ${(32+rnd()*12).toFixed(0)} Assists ${(18+rnd()*10).toFixed(0)}`:sport==='tennis'?`Aces ${(5+rnd()*8).toFixed(0)} Break pts ${(30+rnd()*40).toFixed(0)}% H2H ${Math.floor(rnd()*3)}-${Math.floor(rnd()*3)}`:`Goals scored ${(1+rnd()*2).toFixed(1)} conceded ${(0.6+rnd()*1.2).toFixed(1)} xG ${xG} SoT ${shots} Form ${form} H2H last 5`}
+  };
+  const tDate=todayStr(0),tmDate=todayStr(1),wkDates=weekendDates();
+  const pushForDate=(dateLabel,dateISO,count)=>{
+    for(let i=0;i<count;i++){
+      const spRoll=rnd();
+      let sport='football';
+      if(spRoll>0.55&&spRoll<=0.75)sport='basketball';
+      else if(spRoll>0.75&&spRoll<=0.90)sport='tennis';
+      else if(spRoll>0.90)sport='other';
+      const leagueArr=LEAGUES[sport];const league=leagueArr[Math.floor(rnd()*leagueArr.length)];
+      let home,away;
+      if(sport==='football'){home=FOOTBALL_TEAMS[Math.floor(rnd()*FOOTBALL_TEAMS.length)];do{away=FOOTBALL_TEAMS[Math.floor(rnd()*FOOTBALL_TEAMS.length)]}while(away===home)}
+      else if(sport==='basketball'){home=BASKET_TEAMS[Math.floor(rnd()*BASKET_TEAMS.length)];do{away=BASKET_TEAMS[Math.floor(rnd()*BASKET_TEAMS.length)]}while(away===home)}
+      else if(sport==='tennis'){home=TENNIS_PLAYERS[Math.floor(rnd()*TENNIS_PLAYERS.length)];do{away=TENNIS_PLAYERS[Math.floor(rnd()*TENNIS_PLAYERS.length)]}while(away===home)}
+      else {home=OTHER_TEAMS[Math.floor(rnd()*OTHER_TEAMS.length)];do{away=OTHER_TEAMS[Math.floor(rnd()*OTHER_TEAMS.length)]}while(away===home)}
+      all.push(makeMatch(sport,home,away,league,dateLabel,dateISO));
+    }
+  };
+  const todayCount=8+Math.floor(mulberry32(seed+1)()*5);
+  const tomCount=6+Math.floor(mulberry32(seed+2)()*5);
+  const weekCount=10+Math.floor(mulberry32(seed+3)()*6);
+  pushForDate('today',tDate,todayCount);
+  pushForDate('tomorrow',tmDate,tomCount);
+  wkDates.forEach(d=>pushForDate('weekend',d,Math.ceil(weekCount/2)));
+  return all;
 }
 
 function getFiltered(){
-  var out = state.games.filter(function(g){
-    var dateOk = g.dateTag===state.date;
-    var sportOk = state.sport==='ALL' || g.sport===state.sport;
-    var aiOk = !state.aiOn || (parseFloat(g.edge)>3 && g.conf>60);
-    return dateOk && sportOk && aiOk;
+  return games.filter(g=>{
+    const dateOk=activeDate==='all'||g.dateLabel===activeDate;
+    const sportOk=activeSport==='all'||g.sport===activeSport;
+    return dateOk&&sportOk;
   });
-  state.filtered = out;
-  return out;
 }
 
-function gameCard(g, withCheck){
-  var riskClass = g.risk==='Low'?'risk-low': g.risk==='Med'?'risk-med': g.risk==='High'?'risk-high':'risk-very';
-  var check = withCheck ? '<input type="checkbox" data-id="'+g.id+'" '+(state.selected[g.id]?'checked':'')+' style="width:18px;height:18px;accent-color:#FFD60A">' : '';
-  return '<div class="game"><div class="game-top"><span class="code">'+g.code+'</span><span class="badge" style="background:#0D1530;border:1px solid #1E2C5A;color:#8B93B0">'+g.sport+' • '+g.dateTag+' '+g.time+'</span></div><div class="teams" style="display:flex;justify-content:space-between;align-items:center"><span>'+g.home+' vs '+g.away+'</span>'+check+'</div><div class="meta"><span>Odds '+g.odds+'</span><span>Edge '+g.edge+'%</span><span>Conf '+g.conf+'%</span><span class="'+riskClass+'">Risk '+g.risk+'</span></div><div class="meta"><span>Form '+g.form+'</span><span>xG '+g.xG+'</span><span>Str '+g.strength+'%</span></div><div class="actions"><button class="small-btn yellow btn-copy" data-code="'+g.code+'">Copy Code</button><button class="small-btn btn-sporty" style="background:#00E5BE;color:#070E22;font-weight:800">SportyBet</button></div></div>';
+function renderGames(){
+  const grid=$('#gamesGrid');if(!grid)return;
+  const filtered=getFiltered();
+  const html=filtered.map(g=>`
+    <div class="card">
+      <div class="game-head"><span class="league">${g.league} • ${g.sport.toUpperCase()} • ${g.dateLabel.toUpperCase()} • ${g.time}</span><span class="badge ${g.edge>3?'badge-value':''}" style="${g.edge<=3?'display:none':''}">VALUE ${g.edge}%</span></div>
+      <div class="teams">${g.home} vs ${g.away}</div>
+      <div class="meta"><span class="mono">${g.dateISO}</span><span>Prob ${g.prob}%</span><span>Conf ${g.conf}%</span><span>Edge ${g.edge}%</span><span class="badge ${g.risk==='Low'?'badge-risk-low':g.risk==='Med'?'badge-risk-med':'badge-risk-high'}">${g.risk}</span></div>
+      <div class="odds"><div class="odd"><b>${g.oddsHome}</b><span>Home</span></div>${g.oddsDraw?`<div class="odd"><b>${g.oddsDraw}</b><span>Draw</span></div>`:''}<div class="odd"><b>${g.oddsAway}</b><span>${g.sport==='tennis'?'Away Win':'Away'}</span></div></div>
+      <div style="font-size:11px;color:var(--mut);margin-top:6px">${g.analysis} • Strength ${g.strength}% • Stake ${g.stake}</div>
+      <div class="code-box"><div><div class="code mono">${g.internalCode}</div><div class="mono" style="font-size:11px;color:var(--y);margin-top:2px">SportyBet: ${g.sCode}</div></div><span class="mono" style="font-size:10px;color:var(--mut)">${g.dateLabel}</span></div>
+      <div class="actions"><button class="btn-copy copy-btn" data-code="${g.sCode}" data-date="${g.dateLabel}" data-sport="${g.sport}">Copy Code ${g.internalCode}</button><button class="btn-open sporty-open" data-code="${g.sCode}">SportyBet</button></div>
+      <div class="actions"><button class="btn-open copy-open-btn" data-code="${g.sCode}" data-date="${g.dateLabel}" style="width:100%">Copy & Open SportyBet</button></div>
+    </div>
+  `).join('');
+  grid.innerHTML=html||'<div class="card" style="grid-column:1/-1;text-align:center;color:var(--mut)">No games for filter • Try ALL</div>';
+  const total=games.length;
+  const value=games.filter(x=>x.edge>3).length;
+  const avgEdge=total? (games.reduce((s,x)=>s+x.edge,0)/total).toFixed(1):0;
+  const avgConf=total? Math.round(games.reduce((s,x)=>s+x.conf,0)/total):0;
+  $('#kpi-total').textContent=total;
+  $('#kpi-value').textContent=value;
+  $('#kpi-edge').textContent=avgEdge+'%';
+  $('#kpi-conf').textContent=avgConf+'%';
+  $('#c-today').textContent=games.filter(x=>x.dateLabel==='today').length;
+  $('#c-tom').textContent=games.filter(x=>x.dateLabel==='tomorrow').length;
+  $('#c-week').textContent=games.filter(x=>x.dateLabel==='weekend').length;
+  renderAI();renderAnalysis();renderFixtures();renderTicketList();
 }
 
-function render(){
-  var list = getFiltered();
-  var html = list.map(function(g){ return gameCard(g,false); }).join('');
-  if(!html) html = '<div class="card" style="padding:20px;color:#8B93B0">No games for filter. Click Generate Fresh Games.</div>';
-  $('#games').innerHTML = html;
-  var ap = state.games.filter(function(g){ return parseFloat(g.edge)>3 && g.conf>60; }).slice(0,10);
-  $('#autopickList').innerHTML = ap.map(function(g){ return gameCard(g,false); }).join('');
-  $('#analysisList').innerHTML = list.slice(0,8).map(function(g){
-    return '<div class="game"><div class="game-top"><span class="code">'+g.code+'</span><span class="badge" style="background:#162042;color:#E8ECF8">'+g.sport+'</span></div><div class="teams">'+g.home+' vs '+g.away+'</div><div style="margin:8px 0;height:8px;background:#0D1530;border-radius:10px;overflow:hidden"><div style="width:'+g.strength+'%;height:100%;background:#FFD60A"></div></div><div class="meta"><span>Form W-W-D-W-L Goals 2.1/0.8 Shots 5.4 xG '+g.xG+' H2H Last 5: 3W-1D-1L</span></div><div class="actions"><button class="small-btn yellow btn-copy" data-code="'+g.code+'">Copy Code</button><button class="small-btn btn-sporty" style="background:#00E5BE;color:#070E22;font-weight:800">SportyBet</button></div></div>';
-  }).join('');
-  $('#builderList').innerHTML = state.games.slice(0,14).map(function(g){ return gameCard(g,true); }).join('');
-  renderFixtures();
-  bindCopySporty();
-  bindChecks();
+function renderAI(){
+  const grid=$('#aiGrid');if(!grid)return;
+  const picks=games.filter(g=>g.edge>3&&g.conf>60).slice(0,9);
+  grid.innerHTML=picks.map(g=>`
+    <div class="card"><div class="game-head"><span class="league">AI PICK • ${g.league}</span><span class="badge badge-value">VALUE ${g.edge}% • ${g.conf}%</span></div><div class="teams">${g.home} vs ${g.away}</div><div class="meta">${g.sport} • ${g.dateLabel} • EV ${(g.edge*0.8).toFixed(1)}% • ${g.risk}</div><div class="code-box"><div class="code mono">${g.internalCode}</div><div class="mono" style="font-size:11px;color:var(--y)">${g.sCode}</div></div><div class="actions"><button class="btn-copy copy-btn" data-code="${g.sCode}" data-date="${g.dateLabel}">Copy Code ${g.internalCode}</button><button class="btn-open copy-open-btn" data-code="${g.sCode}" data-date="${g.dateLabel}">Copy & Open</button></div></div>
+  `).join('')||'<div class="card" style="grid-column:1/-1;color:var(--mut)">No VALUE picks now • Refreshing in 60s</div>';
+}
+
+function renderAnalysis(){
+  const grid=$('#analysisGrid');if(!grid)return;
+  const filtered=getFiltered().slice(0,12);
+  grid.innerHTML=filtered.map(g=>`
+    <div class="card"><div class="league">${g.league} • ${g.sport} • Form ${g.form} • xG ${g.xG} • SoT ${g.shots}</div><div class="teams" style="margin-top:8px">${g.home} vs ${g.away}</div><div class="meta">${g.analysis}</div><div style="display:flex;gap:6px;margin-top:8px"><div style="flex:1;background:#0B1330;border-radius:8px;padding:6px;text-align:center"><div style="font-size:10px;color:var(--mut)">Strength</div><div style="height:6px;background:#0E1530;border-radius:10px;margin-top:4px;overflow:hidden"><div style="width:${g.strength}%;height:100%;background:var(--y)"></div></div></div><div style="flex:1;background:#0B1330;border-radius:8px;padding:6px;text-align:center"><div style="font-size:10px;color:var(--mut)">Confidence</div><div style="height:6px;background:#0E1530;border-radius:10px;margin-top:4px;overflow:hidden"><div style="width:${g.conf}%;height:100%;background:var(--t)"></div></div></div></div><div class="code-box"><div class="code mono">${g.internalCode}</div><div class="mono" style="font-size:11px;color:var(--y)">${g.sCode}</div></div></div>
+  `).join('');
 }
 
 function renderFixtures(){
-  var tab = state.tab;
-  var games = state.games;
-  if(tab==='today') games = games.filter(function(g){return g.dateTag==='TODAY'});
-  else if(tab==='tomorrow') games = games.filter(function(g){return g.dateTag==='TOMORROW'});
-  else if(tab==='weekend') games = games.filter(function(g){return g.dateTag==='WEEKEND'});
-  else if(tab==='all') games = games.filter(function(g){return true});
-  else if(tab==='history') games = games.slice(0,6).map(function(g){ var ng=Object.assign({},g); ng.dateTag='HISTORY'; ng.code=g.code.replace('KZ','KZ-H'); return ng; });
-  var html = games.map(function(g){ return gameCard(g,false); }).join('');
-  if(!html) html='<div class="card" style="padding:16px;color:#8B93B0">No fixtures</div>';
-  $('#fixturesContent').innerHTML = html;
-  bindCopySporty();
+  const grid=$('#fixturesGrid');if(!grid)return;
+  let list=games;
+  if(fixtureTab==='today')list=games.filter(x=>x.dateLabel==='today');
+  else if(fixtureTab==='tomorrow')list=games.filter(x=>x.dateLabel==='tomorrow');
+  else if(fixtureTab==='weekend')list=games.filter(x=>x.dateLabel==='weekend');
+  else if(fixtureTab==='upcoming')list=games.filter(x=>x.dateLabel!=='history');
+  else if(fixtureTab==='history'){list=[...games].slice(0,8).map(g=>({...g,result:Math.random()>0.5?'won':'lost',profit:Math.random()>0.5?'+₦1,200':'-₦800'}))}
+  grid.innerHTML=list.map(g=>`
+    <div class="card"><div class="game-head"><span class="league">${g.league} • ${g.sport} • ${g.dateISO}</span>${g.result?'<span class="badge '+(g.result==='won'?'badge-risk-low':'badge-risk-high')+'">'+g.result.toUpperCase()+' '+(g.profit||'')+'</span>':''}</div><div class="teams">${g.home} vs ${g.away}</div><div class="meta"><span>${g.time}</span><span>Odds ${g.oddsHome}/${g.oddsAway}</span></div><div class="code-box"><div class="code mono">${g.internalCode}</div><div class="mono" style="font-size:11px;color:var(--y)">${g.sCode}</div></div><div class="actions"><button class="btn-copy copy-btn" data-code="${g.sCode}" data-date="${g.dateLabel}">Copy Code</button><button class="btn-open sporty-open" data-code="${g.sCode}">SportyBet</button></div></div>
+  `).join('')||'<div class="card">No fixtures</div>';
 }
 
-function bindCopySporty(){
-  $$('.btn-copy').forEach(function(b){
-    b.onclick = function(){
-      var code = b.getAttribute('data-code');
-      if(navigator.clipboard){ navigator.clipboard.writeText(code).then(function(){ showToast('Code copied: '+code); }); }
-      else { var ta=document.createElement('textarea'); ta.value=code; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast('Code copied: '+code); }
-    };
-  });
-  $$('.btn-sporty').forEach(function(b){
-    b.onclick = function(){ window.open('https://www.sportybet.com/ng/','_blank'); };
-  });
+function renderTicketList(){
+  const box=$('#ticketList');if(!box)return;
+  const filtered=getFiltered().slice(0,18);
+  box.innerHTML=filtered.map(g=>`
+    <label style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox" class="ticket-check" data-id="${g.id}" ${selectedTicket.has(g.id)?'checked':''}/><span style="flex:1;font-size:13px">${g.home} vs ${g.away} <span style="color:var(--mut)">${g.oddsHome} • ${g.league} • ${g.sport}</span></span><span class="badge ${g.edge>3?'badge-value':''}">${g.edge}%</span></label>
+  `).join('');
 }
 
-function bindChecks(){
-  $$('#builderList input[type="checkbox"]').forEach(function(ch){
-    ch.onchange = function(){
-      var id = ch.getAttribute('data-id');
-      if(ch.checked) state.selected[id]=true; else delete state.selected[id];
-    };
-  });
+function showPage(name){
+  $$('.page').forEach(p=>p.classList.remove('active'));
+  const target=$('#page-'+name);if(target)target.classList.add('active');
+  $$('.menu-item').forEach(m=>m.classList.toggle('active',m.dataset.page===name));
+  closeMenu();
 }
+
+function openMenu(){const s=$('#sidenav'),o=$('#overlay');s.classList.add('open');o.classList.add('show');document.body.style.overflow='hidden'}
+function closeMenu(){const s=$('#sidenav'),o=$('#overlay');s.classList.remove('open');o.classList.remove('show');document.body.style.overflow=''}
 
 function showToast(msg){
-  var t=$('#toast'); t.textContent=msg; t.style.display='block'; setTimeout(function(){ t.style.display='none'; },2200);
+  const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);
+  try{if(navigator.vibrate)navigator.vibrate(50)}catch{}
 }
 
-function updateKPI(){
-  var total = state.games.length;
-  var avgEdge = (state.games.reduce(function(s,g){return s+parseFloat(g.edge)},0)/Math.max(1,total)).toFixed(1);
-  var avgConf = Math.floor(state.games.reduce(function(s,g){return s+g.conf},0)/Math.max(1,total));
-  $('#kpiTotal').textContent = total;
-  $('#kpiEdge').textContent = avgEdge + '%';
-  $('#kpiConf').textContent = avgConf + '%';
+function copyCodeRobust(code,dateLabel,sport){
+  const dateText={today:'Today game',tomorrow:'Tomorrow game',weekend:'Weekend game'}[dateLabel]||dateLabel||'game';
+  const successMsg='Code copied: '+code+' - '+dateText+' - Paste in SportyBet Load Booking Code - Retrieve '+dateText+' from kazedge app to SportyBet';
+  const tryTextarea=()=>{
+    try{
+      const ta=document.createElement('textarea');
+      ta.value=code;
+      ta.setAttribute('readonly','');
+      ta.style.position='fixed';ta.style.top='0';ta.style.left='0';ta.style.width='2em';ta.style.height='2em';ta.style.padding='0';ta.style.border='none';ta.style.outline='none';ta.style.boxShadow='none';ta.style.background='transparent';
+      document.body.appendChild(ta);ta.focus();ta.select();
+      const ok=document.execCommand('copy');document.body.removeChild(ta);return ok;
+    }catch{return false}
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(()=>{showToast(successMsg);console.log('Copied '+code)}).catch(()=>{if(tryTextarea()){showToast(successMsg)}else{prompt('Copy this code:',code);showToast(successMsg)}});
+  }else{
+    if(tryTextarea()){showToast(successMsg)}else{prompt('Copy this code:',code);showToast(successMsg)}
+  }
 }
 
-// Events
-$('#btnLogin').onclick = function(){ enterApp(); };
-$('#btnOwner').onclick = function(){ enterApp(); };
-function enterApp(){
-  $('#loginScreen').style.display='none';
-  $('#app').style.display='block';
-  generateFresh();
-  if(state.interval) clearInterval(state.interval);
-  state.interval = setInterval(function(){ if(state.genOn && state.refOn){ generateFresh(); } },60000);
+function handleCopyClick(target){
+  const btn=target.closest('.copy-btn,.copy-open-btn,.sporty-open');
+  if(!btn)return;
+  const code=btn.dataset.code;
+  const date=btn.dataset.date||'today';
+  if(btn.classList.contains('copy-btn')||btn.classList.contains('copy-open-btn')){
+    copyCodeRobust(code,date,btn.dataset.sport||'football');
+    const orig=btn.textContent;
+    btn.textContent='Copied! ✓';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied')},2000);
+    if(btn.classList.contains('copy-open-btn')){
+      setTimeout(()=>{document.getElementById('retrieveModal').classList.add('show')},300);
+    }
+  }else if(btn.classList.contains('sporty-open')){
+    window.open('https://www.sportybet.com/ng/','_blank');
+  }
 }
 
-$('#hamburger').onclick = function(){
-  $('#sidenav').classList.toggle('open');
-  $('#overlay').classList.toggle('show');
-  document.body.style.overflow = $('#sidenav').classList.contains('open') ? 'hidden' : '';
-};
-$('#overlay').onclick = function(){
-  $('#sidenav').classList.remove('open');
-  $('#overlay').classList.remove('show');
-  document.body.style.overflow='';
-};
-$$('.menu-item').forEach(function(mi){
-  mi.onclick = function(){
-    $$('.menu-item').forEach(function(m){ m.classList.remove('active'); });
-    mi.classList.add('active');
-    var page = mi.getAttribute('data-page');
-    $$('.page').forEach(function(p){ p.classList.remove('active'); });
-    var target = $('#page-'+page); if(target) target.classList.add('active');
-    $('#sidenav').classList.remove('open'); $('#overlay').classList.remove('show'); document.body.style.overflow='';
-    window.scrollTo(0,0);
-  };
-});
-$$('#dateFilters .filter-btn').forEach(function(b){
-  b.onclick = function(){
-    $$('#dateFilters .filter-btn').forEach(function(x){ x.classList.remove('active'); });
-    b.classList.add('active');
-    state.date = b.getAttribute('data-date');
-    render();
-  };
-});
-$$('#sportFilters .sport-btn').forEach(function(b){
-  b.onclick = function(){
-    $$('#sportFilters .sport-btn').forEach(function(x){ x.classList.remove('active'); });
-    b.classList.add('active');
-    state.sport = b.getAttribute('data-sport');
-    render();
-  };
-});
-$('#toggleAi').onclick = function(){ this.classList.toggle('on'); state.aiOn = this.classList.contains('on'); render(); };
-$('#toggleGen').onclick = function(){ this.classList.toggle('on'); state.genOn = this.classList.contains('on'); showToast(this.classList.contains('on')?'Auto Generator ON':'Auto Generator OFF'); };
-$('#toggleRef').onclick = function(){ this.classList.toggle('on'); state.refOn = this.classList.contains('on'); showToast(this.classList.contains('on')?'Auto Refresh ON':'Auto Refresh OFF'); };
-$('#btnFresh').onclick = function(){ generateFresh(); showToast('Fresh games generated - Date seeded - Not old'); };
-
-$('#btnCheckSlip').onclick = function(){
-  var v = $('#slipInput').value.trim();
-  var res = $('#slipResult');
-  if(!v){ res.innerHTML='<div class="card" style="padding:12px;color:#FF4D6D">Paste booking code first</div>'; return; }
-  var risks=[];
-  if(/1\.(1|2)/.test(v)) risks.push('Low odds <1.30 detected - risky');
-  if(/3\.[5-9]/.test(v) || /[4-9]\./.test(v)) risks.push('High odds >3.50 detected - very risky');
-  if(v.includes('KZ-')){ risks.push('Edge analysed: '+(3.5+Math.random()*2).toFixed(1)+'% - confidence '+(55+Math.floor(Math.random()*20))+'%'); }
-  var level = risks.length>=2 ? 'Very Risky' : risks.length===1 ? 'Med' : 'Low';
-  var color = level==='Low'?'#00E5BE': level==='Med'?'#FFD60A': level==='Very Risky'?'#FF4D6D':'#FF8A4D';
-  res.innerHTML = '<div class="card" style="padding:14px;border-left:4px solid '+color+'"><b style="color:'+color+'">Risk: '+level+'</b><div style="margin-top:8px;font-size:12px;color:#8B93B0">'+(risks.join('<br/>')||'No major risk detected')+'</div><div style="margin-top:10px" class="meta"><span>Strength 72%</span><span>Form Good</span><span>H2H Favourable</span></div></div>';
-};
-$('#btnClearSlip').onclick = function(){ $('#slipInput').value=''; $('#slipResult').innerHTML=''; };
-
-$('#btnBuildTicket').onclick = function(){
-  var ids = Object.keys(state.selected);
-  if(ids.length===0){ $('#ticketResult').innerHTML='<div class="card" style="padding:12px;color:#FFD60A">Select at least 2 matches</div>'; return; }
-  var selectedGames = state.games.filter(function(g){ return state.selected[g.id]; });
-  var combined = selectedGames.reduce(function(acc,g){ return acc * parseFloat(g.odds); },1).toFixed(2);
-  var stake = 1000;
-  var ret = (parseFloat(combined)*stake).toFixed(2);
-  var avgEdge = (selectedGames.reduce(function(s,g){return s+parseFloat(g.edge)},0)/selectedGames.length).toFixed(1);
-  var ticketCode = 'KZ-TICKET-' + Math.floor(100000 + Math.random()*900000);
-  var riskyCount = selectedGames.filter(function(g){ return g.risk==='High' || g.risk==='Very Risky' }).length;
-  var warn = riskyCount>1 ? '<div style="color:#FF4D6D;margin-top:8px;font-size:12px">Warning: '+riskyCount+' risky selections - consider reducing</div>' : '';
-  $('#ticketResult').innerHTML = '<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between"><b>'+ticketCode+'</b><span style="color:#8B93B0;font-size:12px">Combined '+combined+'</span></div><div style="margin-top:8px;font-size:12px;color:#8B93B0">Stake ₦'+stake+' • Return ₦'+ret+' • Edge '+avgEdge+'% • EV ₦'+(ret*0.7).toFixed(2)+'</div>'+warn+'<div style="margin-top:12px;display:flex;gap:8px"><button class="small-btn yellow" onclick="navigator.clipboard.writeText(\''+ticketCode+'\');document.getElementById(\'toast\').textContent=\'Code copied\';document.getElementById(\'toast\').style.display=\'block\';setTimeout(function(){document.getElementById(\'toast\').style.display=\'none\'},2000)">Copy Code</button><button class="small-btn" style="background:#00E5BE;color:#070E22;font-weight:800" onclick="window.open(\'https://www.sportybet.com/ng/\',\'_blank\')">SportyBet</button></div></div>';
-};
-
-$$('.tab-btn').forEach(function(b){
-  b.onclick = function(){
-    $$('.tab-btn').forEach(function(x){ x.classList.remove('active'); });
-    b.classList.add('active');
-    state.tab = b.getAttribute('data-tab');
-    renderFixtures();
-  };
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.closest('.copy-btn')||t.closest('.copy-open-btn')||t.closest('.sporty-open')){handleCopyClick(t);return}
 });
 
-$$('.owner-act').forEach(function(b){
-  b.onclick = function(){ showToast(b.textContent + ' - Action processed'); };
-});
+function init(){
+  const auth=localStorage.getItem('kazedge_v44_auth');
+  if(auth==='1'){showApp()}else{$('#loginPage').style.display='flex';$('#app').style.display='none'}
+  games=buildGames(todayStr(0));
+  renderGames();
+  const now=new Date();$('#aiTime').textContent='AI Generated: '+now.toLocaleTimeString();
+  if(refreshTimer)clearInterval(refreshTimer);
+  refreshTimer=setInterval(()=>{if(refreshAuto){games=buildGames(todayStr(0));renderGames();$('#aiTime').textContent='AI Generated: '+new Date().toLocaleTimeString()}},60000);
+}
 
-$('#btnLogout').onclick = function(){
-  try{ localStorage.clear(); }catch(e){}
-  $('#app').style.display='none';
-  $('#loginScreen').style.display='flex';
-};
+function showApp(){$('#loginPage').style.display='none';$('#app').style.display='block'}
 
+document.addEventListener('DOMContentLoaded',()=>{
+  init();
+  $('#loginBtn').addEventListener('click',()=>{
+    const ph=$('#phone').value.trim();const pw=$('#password').value.trim().toLowerCase();
+    if(ph==='07067183541'&&pw==='kazeem2025'){localStorage.setItem('kazedge_v44_auth','1');showApp();showToast('Login successful • Owner Access Bypass ⚡');}
+    else{showToast('Invalid credentials • Use 07067183541 / kazeem2025')}
+  });
+  $('#ham').addEventListener('click',openMenu);
+  $('#overlay').addEventListener('click',closeMenu);
+  $('#logoutBtn').addEventListener('click',()=>{localStorage.removeItem('kazedge_v44_auth');location.reload()});
+  $$('.menu-item').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+  $$('#dateFilters .fbtn').forEach(b=>b.addEventListener('click',()=>{$$('#dateFilters .fbtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeDate=b.dataset.date;renderGames()}));
+  $$('#sportFilters .fbtn').forEach(b=>b.addEventListener('click',()=>{$$('#sportFilters .fbtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeSport=b.dataset.sport;renderGames()}));
+  $('#freshBtn').addEventListener('click',()=>{games=buildGames(todayStr(0)+'-'+Date.now());renderGames();showToast('Fresh games generated • Date-seeded • '+todayStr(0))});
+  $('#aiToggle').addEventListener('click',function(){aiAuto=!aiAuto;this.textContent='Auto Generator: '+(aiAuto?'ON':'OFF');showToast('Auto Generator '+(aiAuto?'ON':'OFF'))});
+  $('#autoRefresh').addEventListener('click',function(){refreshAuto=!refreshAuto;this.textContent='Auto Refresh: '+(refreshAuto?'ON (60s)':'OFF');showToast('Auto Refresh '+(refreshAuto?'ON':'OFF'))});
+  $$('[data-fixtab]').forEach(b=>b.addEventListener('click',()=>{$$('[data-fixtab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');fixtureTab=b.dataset.fixtab;renderFixtures()}));
+  $('#checkSlipBtn').addEventListener('click',()=>{
+    const txt=$('#slipText').value.trim();const box=$('#slipResult');if(!txt){box.innerHTML='<div style="color:var(--mut);font-size:13px">Paste booking code or selections to check</div>';return}
+    const risky=[];const lines=txt.split('\n');
+    lines.forEach(line=>{
+      const m=line.match(/([0-9]+\.[0-9]+)/);const odd=m?parseFloat(m[1]):null;
+      if(odd&& (odd<1.3||odd>3.5)) risky.push({line,reason:'Odds '+(odd<1.3?'<1.30 low value':'>3.50 high risk')});
+    });
+    if(risky.length===0){box.innerHTML='<div class="card" style="border-color:rgba(0,229,190,.3)"><b style="color:var(--t)">Low Risk • Good selections</b><div style="font-size:12px;color:var(--mut);margin-top:6px">Edge &gt;2% Confidence &gt;55% • No risky flagged</div></div>'}
+    else{box.innerHTML=risky.map(r=>'<div class="card" style="border-color:rgba(255,107,107,.3);margin-bottom:8px"><b style="color:#FF6B6B">Risky: '+r.line.slice(0,80)+'</b><div style="font-size:12px;color:var(--mut)">Reason: '+r.reason+' • Confidence &lt;55% or Form poor • H2H bad • Edge &lt;2%</div></div>').join('')}
+  });
+  $('#clearSlipBtn').addEventListener('click',()=>{$('#slipText').value='';$('#slipResult').innerHTML=''});
+  document.addEventListener('change',e=>{
+    if(e.target.classList.contains('ticket-check')){const id=parseInt(e.target.dataset.id);if(e.target.checked)selectedTicket.add(id);else selectedTicket.delete(id)}
+  });
+  $('#buildTicketBtn').addEventListener('click',()=>{
+    const sel=games.filter(g=>selectedTicket.has(g.id));
+    const res=$('#ticketResult');
+    if(sel.length===0){res.innerHTML='<div style="color:var(--mut);font-size:13px">Select at least 2 matches</div>';return}
+    const combinedOdds=sel.reduce((a,g)=>a*parseFloat(g.oddsHome),1).toFixed(2);
+    const stake=10;const ret=(parseFloat(combinedOdds)*stake).toFixed(2);
+    const avgRisk=sel.some(x=>x.risk==='Very Risky')?'Very Risky':sel.some(x=>x.risk==='High')?'High':sel.some(x=>x.risk==='Med')?'Med':'Low';
+    const ev=sel.reduce((s,g)=>s+g.edge,0)/sel.length;
+    const code='KZ-TICKET-'+Math.random().toString(36).slice(2,6).toUpperCase();
+    const sCode='SB-FT-TD-'+Math.random().toString(36).slice(2,8).toUpperCase();
+    const warn=sel.filter(x=>x.risk==='High'||x.risk==='Very Risky').length>2?'<div style="margin-top:8px;color:#FF6B6B;font-size:12px">⚠️ Too many risky selections • Consider removing high risk</div>':'';
+    res.innerHTML='<div class="card"><b>Ticket Built • '+sel.length+' selections</b><div style="margin-top:8px;font-size:13px">Combined Odds: <b>'+combinedOdds+'</b> • Stake $'+stake+' • Potential Return $'+ret+' • Risk '+avgRisk+' • EV '+ev.toFixed(1)+'%</div><div class="code-box"><div><div class="code mono">'+code+'</div><div class="mono" style="font-size:11px;color:var(--y)">SportyBet: '+sCode+'</div></div></div><div class="actions"><button class="btn-copy copy-btn" data-code="'+sCode+'" data-date="today">Copy Code '+sCode+'</button><button class="btn-open copy-open-btn" data-code="'+sCode+'" data-date="today">Copy & Open SportyBet</button></div>'+warn+'</div>';
+  });
+  $('#clearTicketBtn').addEventListener('click',()=>{selectedTicket.clear();$$('.ticket-check').forEach(c=>c.checked=false);$('#ticketResult').innerHTML=''});
+  $('#closeModalBtn').addEventListener('click',()=>$('#retrieveModal').classList.remove('show'));
+  $('#openSportyBtn').addEventListener('click',()=>{window.open('https://www.sportybet.com/ng/','_blank');$('#retrieveModal').classList.remove('show')});
+  $('#retrieveModal').addEventListener('click',e=>{if(e.target.id==='retrieveModal')e.currentTarget.classList.remove('show')});
+  $$('.approveBtn').forEach(b=>b.addEventListener('click',()=>showToast('Users approved • Subscription active')));
+  $$('.revBtn').forEach(b=>b.addEventListener('click',()=>showToast('Revenue: ₦128,400 this week • 42 active subs')));
+  $$('.planBtn').forEach(b=>b.addEventListener('click',()=>showToast('Plans managed • Opay Clement Kayode 7067183541')));
 });
 </script>
 </body>

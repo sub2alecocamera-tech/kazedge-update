@@ -1,6 +1,6 @@
 {
-  "name": "kazedge-ultimate-master-v41-professional",
-  "version": "41.0.0",
+  "name": "kazedge-ultimate-master-v44-professional",
+  "version": "44.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -8,5 +8,9 @@
   "dependencies": {
     "express": "4.18.2",
     "cors": "2.8.5"
-  }
+  },
+  "description": "KAZEDGE V44 ULTIMATE MASTER PROFESSIONAL FINAL - Check Well All Working Together Professional No Mistake",
+  "keywords": ["kazedge","betting","professional","master","v44"],
+  "author": "KAZEDGE",
+  "license": "MIT"
 }
